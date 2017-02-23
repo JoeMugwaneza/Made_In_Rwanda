@@ -1,0 +1,14 @@
+<h1>Create a Product</h1>
+<%= form_tag "/products/", method: :post do %>
+  <div>
+Name of a Product <br> <input type="text" name="name of a product" value="<%= @product.name %>">
+  </div>
+  <div>
+    Description <br> <input type="text" name="description" value="<%= @product.description %>">
+  </div>
+  <div>
+    Price <br> <input type="integer" name="price" value="<%= @product.price %>">
+  </div>
+  <br><input type="submit" value="New Product">  <a href="/products" class="btn btn-default">Cancel</a>
+  <% end %>
+  
