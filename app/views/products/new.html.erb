@@ -1,14 +1,19 @@
 <h1>Create a Product</h1>
-<%= form_tag "/products/", method: :post do %>
-  <div>
-Name of a Product <br> <input type="text" name="name of a product" value="<%= @product.name %>">
-  </div>
-  <div>
-    Description <br> <input type="text" name="description" value="<%= @product.description %>">
-  </div>
-  <div>
-    Price <br> <input type="integer" name="price" value="<%= @product.price %>">
-  </div>
-  <br><input type="submit" value="New Product">  <a href="/products" class="btn btn-default">Cancel</a>
-  <% end %>
-  
+<div class="container-fluid">
+ <%= form_tag "/products/", method: :post do %>
+   <div>
+    Name of a Product <br> <input type="text" name="name">
+   </div>
+   <div>
+     <p>Description</p>
+     <textarea rows="4" cols="50" name="description"></textarea>
+   </div>
+   <div>
+     Price <br> <input type="integer" name="price">
+   </div>
+   <br><input type="submit" value="New Product"> <%= link_to "back", root_path, class: "btn btn-default" %>
+   <% end %>
+    
+</div>
+
+

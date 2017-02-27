@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  
+  <h1><%= @images.first.product.name %> Gallery</h1>
+<div class="item">
+  <% @images.each do |image| %>
+  <img src="<%= image.url %>">
+  <% end %>
+</div>
+
+  <p> <%= @images.first.product.description %></p>
+
+  <%= form_tag "/images", method: :post do%>
+<div>
+  <input type="hidden" name="product_id" value="<%= @product_id %>">
+</div>
+<div>
+  <input type="url" name="url"  style="width: 600px;">
+</div>
+<div>
+  <input type="submit" value="Add Image">
+</div>
+<% end %>
+</div>
+
+
+
+
+

@@ -1,14 +1,24 @@
 <h1> Let's Enjoy What We Make</h1>
 
- <%= button_to "Add New Product", "/products/new", class: "btn btn-primary" , method: :get %>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+  
+  <%= button_to "Add New Product", "/products/new", class: "btn btn-primary", method: :get %>
 
-<% @products.each_slice(3) do |products| %>
-
- <p> <% products.each do |product| %></p>
-  <div class="col-md-4"></div>
-    <strong> <p><%= link_to product.name, "/products/#{product.id}" %></p> </strong>
-   <p> <img src="<%=product.images[0].url%>" class="img-responsive"></p>
-   <p> <%= product.description %></p>
-   <p> <%= product.price %></p>
+<table class="table-striped">
+  <% @products.each_slice(3) do |products| %>
+    <div class="row">
+    <div class="item">
+        <% products.each do |product| %>
+          <div class="col-md-4">
+            <h2><%= link_to product.name, product %></h2>
+            <img src="<%= product.images.first.url %>" class="img-responsive">
+            <h2>Description: <%= product.description %></h2>
+            <h2>Price: <%= product.price %></h2>
+          </div>
+        <% end %>
+      
+    </div>
+    </div>
   <% end %>
-<% end %> d
