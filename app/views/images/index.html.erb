@@ -1,11 +1,16 @@
 <div class="container-fluid">
   
   <h1><%= @images.first.product.name %> Gallery</h1>
-<div class="item">
+
+<div class="row">
   <% @images.each do |image| %>
-  <img src="<%= image.url %>">
+    <div class="col-md-4">
+      <img src="<%= image.url %>" style="width: 300px; height: 300px;">
+      <div><%= link_to "Delete an Image", images_path, class: "btn btn-default", method: :delete, data: {confirm: "Are you sure?"} %></div><br>
+    </div>
   <% end %>
 </div>
+
 
   <p> <%= @images.first.product.description %></p>
 
@@ -14,7 +19,7 @@
   <input type="hidden" name="product_id" value="<%= @product_id %>">
 </div>
 <div>
-  <input type="url" name="url"  style="width: 600px;">
+  <input type="url" name="url"  style="width: 600px;" placeholder="Put image address (URL) here....">
 </div>
 <div>
   <input type="submit" value="Add Image">

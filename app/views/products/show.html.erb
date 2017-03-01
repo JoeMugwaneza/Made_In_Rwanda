@@ -1,15 +1,15 @@
 <div class="container-fluid">
   <h1><%= @product.name %></h1>
-  <h2><%= @product.description %></h2>
-  <h2> <%= @product.price %></h2>
-
+  <p><b>Description</b>: <%= @product.description %></p>
+  <data><b>Price</b>: <%= @product.price %></data>
+ 
     <div class="item">
-      <img src="<%= @product.images.sample.url %>">
+      <img src="<%= @product.images.sample.url %>"  style="width: 200px; height: 230px;">
     </div>
     </div>
 
  <div>
-  <%= link_to "Edit", edit_product_path, class: "btn btn-default" %> <%= link_to "Delete", product_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
+  <%= link_to "Edit", edit_product_path, class: "btn btn-default" %> <%= link_to "Delete a Product", product_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
   <br> <br> <%= link_to "Back", root_path, class: "btn btn-default"%> 
    <%= link_to "View More Images", "/images?product_id=#{@product.id}", class: "btn btn-default" %>
  </div>

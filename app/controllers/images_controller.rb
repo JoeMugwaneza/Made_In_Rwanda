@@ -29,6 +29,12 @@ class ImagesController < ApplicationController
   end
 
   def destroy
+    @image = Image.find_by(id: params[:id])
+
+    if @image.destroy
+      redirect_to :back, notice: "Successfully deleted image"
+    end 
+
   end 
 
 end
