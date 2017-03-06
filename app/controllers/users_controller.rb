@@ -1,19 +1,21 @@
 class UsersController < ApplicationController
 
   def new
+    @roles = Role.where.not(user_type:"admin")
+    @user = User.new
     
   end
 
   def create
-    first_name = params[:first_name]
-    last_name = params[:last_name]
-    email = params[:email]
-    password = params[:password]
-    password_confirmation = params[:password_confirmation]
+   @user = User.new(
+    name: params[:name],
+    email: params[:email],
+    password: params[:password],
+    password_confirmation: params[:password_confirmation],
+    role_id: params[:role_id]
+    )
 
-    user = User.new(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation)
-
-    if user.save
+    if @user.save
       session[:user_id] = user.id
       flash[:success] = "Successfully created account"
 
@@ -21,7 +23,8 @@ class UsersController < ApplicationController
     else 
       flash[:warning] = "Invalid email or password"
 
-      redirect_to "signup"
+      redirect_to "/signup"
+    end 
     
   end
 end

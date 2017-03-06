@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])  
+    user = User.find_by(name: params[:name])  
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
       redirect_to "/products"
     else 
-      falsh[:warning] = "Invalide email or password"
+      flash[:warning] = "Invalide email or password"
       redirect_to "/login"
     end 
   end

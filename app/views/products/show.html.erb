@@ -1,15 +1,71 @@
-<div class="container-fluid">
-  <h1><%= @product.name %></h1>
-  <p><b>Description</b>: <%= @product.description %></p>
-  <data><b>Price</b>: <%= @product.price %></data>
- 
-    <div class="item">
-      <img src="<%= @product.images.sample.url %>"  style="width: 200px; height: 230px;">
-    </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
- <div>
-  <%= link_to "Edit", edit_product_path, class: "btn btn-default" %> <%= link_to "Delete a Product", product_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
-  <br> <br> <%= link_to "Back", root_path, class: "btn btn-default"%> 
-   <%= link_to "View More Images", "/images?product_id=#{@product.id}", class: "btn btn-default" %>
- </div>
+    <title>eCommerce Product Detail</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+  </head>
+
+  <body>
+  
+    <%= link_to "Back", root_path, class: "btn btn-default"%> 
+  <div class="container">
+    <div class="card">
+      <div class="container-fliud">
+        <div class="wrapper row">
+          <div class="preview col-md-6">
+            <div class="preview-pic tab-content">
+              <div class="tab-pane active" id="pic-1"><img src="<%=@product.images.last.url %>" /></div>
+              
+            </div>
+            <div>
+            <%= link_to "View More Images", "/images?product_id=#{@product.id}", class: "btn btn-default" %>  
+            <%= link_to "Edit a Product", edit_product_path, class: "btn btn-default" %> 
+            <%= link_to "Delete a Product", product_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+              
+            </div>
+
+          </div>
+          <div class="details col-md-6">
+            <h3 class="product-title"><%= @product.name %></h3>
+            <div class="rating">
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <span class="review-no">41 reviews</span>
+            </div>
+            <p class="product-description"><%= @product.description %></p>
+            <h4 class="price">Current price: Rwf <span><%= @product.price %></span></h4>
+            <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+            <h5 class="sizes">sizes:
+              <span class="size" data-toggle="tooltip" title="small">s</span>
+              <span class="size" data-toggle="tooltip" title="medium">m</span>
+              <span class="size" data-toggle="tooltip" title="large">l</span>
+              <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+            </h5>
+            <div>
+            <h5 class="colors">colors:
+              <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+              <span class="color green"></span>
+              <span class="color blue"></span>
+            <div class="action">
+              <br><button class="add-to-cart btn btn-default" type="button">add to cart</button>
+              <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+            </div>
+              
+            </div>
+            </h5>
+          </div>
+        </div>
+    </div>
+  </div>
+  </body>
+</html>
