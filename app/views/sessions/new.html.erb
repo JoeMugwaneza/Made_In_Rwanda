@@ -1,12 +1,14 @@
-<div style="text-align: center;" class="container-fluid">
+<div class="container-fluid">
   <h1>Log In</h1>
   <%= form_tag "/login", method: :post do %>
-  <div>
-    <b>User Name</b> <input type="name" name="name">
-  </div>
-  <div>
-  <b>Password</b> <input type="password" name="password">
-  </div>
+   <div class="form-group">        
+        <label><b>User Name</b></label>
+        <input style="width: 300px;" type="name" class="form-control" name="name" required>
+    </div>
+     <div class="form-group">
+        <label><b>Email</b></label>
+        <input  type="email"  class="form-control" style="width: 300px;" name="email" required>        
+    </div>
   <div>
     <input type="submit" value="Log in">
   </div>

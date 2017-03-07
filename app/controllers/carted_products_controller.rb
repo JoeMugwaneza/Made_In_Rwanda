@@ -9,18 +9,17 @@ class CartedProductsController < ApplicationController
   end
 
   def create
-    
-    product = Product.find_by(id: params[:product_id])
-    quantity = params[:quantity].to_i
-    subtotal = quantity * product.price
-    tax = quantity * product.tax
-    total = subtotal + tax
+    if current_user
+      order = current_user.orders.find_by(completed:false) || Order.create(user_id: current_user.id, completed: false)
+      carted_product = CartedProduct.new(order_id: order.id, product_id: params[:product_id], quantity: params[:quantity])
 
-    order = current_user.orders.find_by(completed:false) || Order.create(user_id: current_user.id, completed: false)
-    carted_product = CartedProduct.new(order_id: order.id, product_id: params[:product_id], quantity: params[:quantity])
+      carted_product.save
+      redirect_to "/carted_products"
+    else
+      flash[:warning] = "Sign up to start making order!"
+      redirect_to "/signup"
+    end
 
-    carted_product.save
-    redirect_to "/carted_products"
   end
 
   def destroy
