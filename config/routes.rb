@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root 'products#index'
   resources :products
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
+  root 'products#index'
   get "/images", to:'images#index'
   get "/images/new", to: 'images#new'
   post "/images", to:'images#create'
