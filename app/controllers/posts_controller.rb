@@ -19,7 +19,12 @@ class PostsController < ApplicationController
     redirect_to @post
   end
 
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
+
   def update
+    @post = Post.find_by(id: params[:id])
   end
 
   def destroy
