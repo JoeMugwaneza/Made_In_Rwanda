@@ -11,12 +11,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    title = params[:title]
-    body = params[:body]
 
-    @post = Post.create(title: title, body: body)
+    @post = Post.new(post_params)
 
-    redirect_to @post
+    if @post.save
+      redirect_to @post
+    else 
+
+      render 'new'
+    end 
   end
 
   def edit
@@ -28,5 +31,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private 
+
+  def post_params
+    params.require(:post).permit(:title, :body)
+    
   end
 end
