@@ -8,11 +8,13 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
 
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     if @post.save
       redirect_to @post
@@ -28,6 +30,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by(id: params[:id])
+
+    if @post.update(params[:post].permit(:title, :body))
+      redirect_to @post
+    else
+      render "edit"
   end
 
   def destroy

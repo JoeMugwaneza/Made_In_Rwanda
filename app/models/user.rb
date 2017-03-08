@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :orders
   belongs_to :role
 
+  has_many :posts
+
 
 
   def seller
