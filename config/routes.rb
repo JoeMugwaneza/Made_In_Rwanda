@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post "/images", to:'images#create'
   delete "/images/", to: 'images#destroy'
 
+  get "/users", to: 'users#index'
   get "/signup", to: 'users#new'
   post "/users", to: 'users#create'
 

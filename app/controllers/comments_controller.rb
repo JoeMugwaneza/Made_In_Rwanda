@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
   
   def create
-    @post = Post.find_by(id: params[:post_id])
-    @comment = Comment.create(params[:comment].permit(:name, :body))
+    @comment = Comment.new(comment_params)
+    @comment.post_id = params[:post_id]
 
-    redirect_to post_path(@post)
+    if @comment.save
+      redirect_to "/posts/#{params[:post_id]}" 
+    end
   end
 
   def destroy
@@ -13,6 +15,13 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     redirect_to post_path(@post)
+    
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:name, :body, :post_id)
     
   end
 

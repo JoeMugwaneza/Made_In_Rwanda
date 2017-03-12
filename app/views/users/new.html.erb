@@ -22,9 +22,9 @@
         </div>
 
         <strong>Role</strong>
-        <select user_type="role_id">
-            <% @roles.each do |role| %>
-              <option value="<%= role.id %>" <%= "selected='selected'" if role.user_type == "buyer" %> > <%= role.user_type %></option>
+        <select name="user_category">
+           <% UserCategory.all.each do |category| %>
+              <option value="<%= category.id %>" <%= "selected='selected'" if category.user_type == "buyer" %> > <%= category.user_type %></option>
             <% end %>     
         </select> <br>
         <input type="checkbox" checked="checked"> Remember Me
