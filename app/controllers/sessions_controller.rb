@@ -6,13 +6,15 @@ class SessionsController < ApplicationController
 
   def create
     role = params[:role_id].to_i
-    user = User.find_by(email: params[:name]) 
-    if user && user.authenticate(params[:password]) && role == 2
+    user = User.find_by(email: params[:email]) 
+
+    if user && user.authenticate(params[:password]) && user.roles.first.user_category.id == role && 2
       session[:user_id] = user.id
       flash[:warning] = "Successfully logged in"
 
       redirect_to "/users"
-    elsif user && user.authenticate(params[:password])
+
+    elsif user && user.authenticate(params[:password]) && user.roles.first.user_category.id == role && 3
       session[:user_id] = user.id
       flash[:warning] = "Successfully logged in"
 

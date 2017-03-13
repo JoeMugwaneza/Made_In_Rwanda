@@ -1,6 +1,6 @@
 <h1>Create a Product</h1>
 <div class="container-fluid">
- <%= form_tag "/products/", method: :post do %>
+ <%= form_tag "/products", method: :post, multipart: true do %>
    <div>
     Name of a Product <br> <input type="text" name="name">
    </div>
@@ -11,7 +11,12 @@
    <div>
      Price <br> <input type="integer" name="price">
    </div>
-   <br><input type="submit" value="New Product"> <%= link_to "back", root_path, class: "btn btn-default" %>
+   <div> <br>
+     Uplaod Image<input type="file" name="image" accept="image/*;capture=camera">
+   </div>
+   
+   <br><input type="submit" value="New Product"> 
+    <%= link_to "back", root_path, class: "btn btn-default" %>
    <% end %>
     
 </div>

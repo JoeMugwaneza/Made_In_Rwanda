@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
+  root 'products#index'
+  
   resources :products
   resources :posts do
     resources :comments
   end
-
-  root 'products#index'
-  get "/images", to:'images#index'
-  get "/images/new", to: 'images#new'
-  post "/images", to:'images#create'
-  delete "/images/", to: 'images#destroy'
 
   get "/users", to: 'users#index'
   get "/signup", to: 'users#new'
@@ -26,4 +22,7 @@ Rails.application.routes.draw do
   get "/carted_products", to: 'carted_products#index'
   post "/carted_products", to: 'carted_products#create'
   delete "/carted_products/:id", to: 'carted_products#destroy'
+
+
+  post "/searches", to: 'searches#index'
 end

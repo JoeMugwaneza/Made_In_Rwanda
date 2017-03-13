@@ -1,22 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :orders
-  belongs_to :role
-
-  has_many :posts
   has_many :products
-
+  has_many :orders
+  has_many :posts
   has_many :roles
   has_many :user_categories, through: :roles
-  # def seller
-  #   role.user_type == "seller"
-  # end
-
-  # def buyer
-  #   role.user_type == "buyer"
-  # end
-
-  # def admin
-  #   role.user_type == "admin"
-  # end
 end

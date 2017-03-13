@@ -1,0 +1,11 @@
+<div class="container">
+  
+  <h3>Search Results:</h3>
+ 
+    <% @products.each do |product| if @products.any?%>
+      <%= product.name %>
+      <%= product.description %>
+      <img src="<%= product.image_url %>">
+    <% end %>
+  <% end %>
+</div>

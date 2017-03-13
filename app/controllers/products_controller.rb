@@ -12,15 +12,18 @@ class ProductsController < ApplicationController
   end 
 
   def create
-    name = params[:name]
-    description = params[:description]
-    price = params[:price]
-
-    @product = Product.new(name: name, description: description, price: price)
-
+     response = Unirest.post("http://uploads.im/api?upload", parameters: {file: params[:image]}).body
+    @product = Product.new(
+      name: params[:name],
+      description: params[:description],
+      price: params[:price],
+      image_url: response["data"]["img_url"]
+      )
+    @product.user_id = current_user.id
     if @product.save
-
-      redirect_to "/images/new", notice: "Please add an image"
+      
+      flash[:success] = "Successfully created Product"
+      redirect_to "/products"
     else 
       render 'new'
     end 

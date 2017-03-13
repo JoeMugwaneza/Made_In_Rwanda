@@ -12,18 +12,16 @@
 
   <body>
   
-    <%= link_to "Back", root_path, class: "btn btn-warning"%> 
   <div class="container">
     <div class="card">
       <div class="container-fliud">
         <div class="wrapper row">
           <div class="preview col-md-6">
             <div class="preview-pic tab-content">
-              <div class="tab-pane active" id="pic-1"><img src="<%=@product.images.last.url %>" /></div>
+              <div class="tab-pane active" id="pic-1"><img src="<%=@product.image_url %>" /></div>
               
             </div>
             <div>
-            <%= link_to "View More Images", "/images?product_id=#{@product.id}", class: "btn btn-info" %>  
             <%= link_to "Edit a Product", edit_product_path, class: "btn btn-warning" %> 
             <%= link_to "Delete a Product", product_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
               

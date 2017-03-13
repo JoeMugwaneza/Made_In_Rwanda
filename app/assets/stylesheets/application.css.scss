@@ -18,7 +18,7 @@
 
  @import "bootstrap";
 
- body { padding-top: 60px; }
+ /*body { padding-top: 60px; }*/
 
  @import "bootswatch/yeti/bootswatch";
 
@@ -39,10 +39,11 @@ label {
     font-family: bold;
 }
 
+/*navigation styling*/
 
 #flipkart-navbar {
-    background-color: #2874f0;
-    color: #FFFFFF;
+    background-color:#c6ed29;
+    color: black; 
 }
 
 .row1{
@@ -50,7 +51,7 @@ label {
 }
 
 .row2 {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .flipkart-navbar-input {
@@ -92,14 +93,6 @@ label {
     text-decoration: none;
     color: #fff;
     cursor: pointer;
-}
-
-.cart-svg {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    margin-right: 8px;
 }
 
 .item-number {
