@@ -14,6 +14,7 @@ class CartedProductsController < ApplicationController
       carted_product = CartedProduct.new(order_id: order.id, product_id: params[:product_id], quantity: params[:quantity])
 
       carted_product.save
+      flash[:success] = "Product added in your cart"
       redirect_to "/carted_products"
     else
       flash[:warning] = "Sign up to start making order!"

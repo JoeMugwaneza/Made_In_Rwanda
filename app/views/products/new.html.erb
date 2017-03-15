@@ -2,14 +2,17 @@
 <div class="container-fluid">
  <%= form_tag "/products", method: :post, multipart: true do %>
    <div>
-    Name of a Product <br> <input type="text" name="name">
+    Name of a Product <br> <input type="text" name="name" placeholder="Product Name">
    </div>
    <div>
      <p>Description</p>
-     <textarea rows="4" cols="50" name="description"></textarea>
+     <textarea rows="4" cols="50" name="description" placeholder="Describe the product here........."></textarea>
    </div>
    <div>
-     Price <br> <input type="integer" name="price">
+     Quantity <br> <input type="integer" name="quantity" placeholder="Quantity in Store">
+   </div>
+   <div>
+     Price <br> <input type="integer" name="price" placeholder="Product Price">
    </div>
    <div> <br>
      Uplaod Image<input type="file" name="image" accept="image/*;capture=camera">

@@ -25,4 +25,8 @@ Rails.application.routes.draw do
 
 
   post "/searches", to: 'searches#index'
+
+  get "/about", to: 'pages#about'
+  get "/contact", to: 'pages#contact'
+  get "/challenge", to: 'pages#challenge'
 end

@@ -53,7 +53,7 @@
             </div>
                 <%= form_tag "/carted_products", method: :post do %>
                   <div>
-                    Quantity: <input type="text" name="quantity" placeholder="quantity">
+                    Quantity: <input type="text" name="quantity" placeholder="quantity"> <select></select>
                   </div>
                   <div>
                     <input type="hidden" name="product_id" value="<%= @product.id %>">

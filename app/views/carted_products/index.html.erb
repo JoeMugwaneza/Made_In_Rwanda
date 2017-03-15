@@ -9,10 +9,10 @@
         <th>Price Per Product</th>
         <th>Remove</th>
       </tr>
-    <%= @order.carted_products.each do |carted_product| %>
+    <% @order.carted_products.each do |carted_product| %>
       <tr>
         <td><%= carted_product.product.name %></td>
-        <td><%= carted_product.Quantity %></td>
+        <td><%= carted_product.quantity %></td>
         <td><%= carted_product.product.price %></td>
         <td><%= link_to "Remove", "/carted_products/#{carted_product.id}" %></td>
       </tr>

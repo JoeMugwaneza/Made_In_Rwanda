@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name],
       description: params[:description],
+      quantity: params[:quantity],
       price: params[:price],
       image_url: response["data"]["img_url"]
       )
@@ -35,7 +36,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find_by(id: params[:id])
 
-    if @product.update({id: params[:id], name: params[:name], description: params[:description], price: params[:price]})
+    if @product.update({id: params[:id], name: params[:name], description: params[:description], quantity: params[:quantity], price: params[:price]})
 
       redirect_to @product
     else 
