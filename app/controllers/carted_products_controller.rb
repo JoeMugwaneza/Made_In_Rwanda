@@ -1,11 +1,17 @@
 class CartedProductsController < ApplicationController
 
   def index
+    @carted_products = CartedProduct.all
     @order = current_user.orders.find_by(completed:false)
     unless @order
       flash[:warning] = "Your Shopping is Empty"
       redirect_to "/"
     end
+  end
+
+  def show
+    carted_product = CartedProduct.find_by(id: params[:id])
+    
   end
 
   def create

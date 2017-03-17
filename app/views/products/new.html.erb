@@ -4,6 +4,12 @@
    <div>
     Name of a Product <br> <input type="text" name="name" placeholder="Product Name">
    </div>
+   <strong>Category</strong>
+        <select name="category">
+           <% Category.all.each do |category| %>
+              <option value="<%= category.name %>"><%= category.name %></option>
+            <% end %>     
+        </select> <br>
    <div>
      <p>Description</p>
      <textarea rows="4" cols="50" name="description" placeholder="Describe the product here........."></textarea>
