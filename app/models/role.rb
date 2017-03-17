@@ -1,4 +1,4 @@
 class Role < ApplicationRecord
-  belongs_to :user
-  belongs_to :user_category
+  belongs_to :user, optional: true
+  belongs_to :user_category, optional: true
 end
