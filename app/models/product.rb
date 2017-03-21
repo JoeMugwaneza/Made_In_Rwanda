@@ -4,8 +4,8 @@ class Product < ApplicationRecord
   has_many :categories, through: :category_products
   has_many :carted_products
   has_many :orders, through: :carted_products
-  has_many :images
   belongs_to :user , optional: true
+  belongs_to :seller, optional: true
   validates :price, numericality: {greater_than: 0}
   validates :name, presence: true 
   validates :description, presence: true

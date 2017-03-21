@@ -3,10 +3,6 @@ CartedProduct.create!([
   {product_id: 36, order_id: 1, quantity: 1},
   {product_id: 34, order_id: 1, quantity: 3}
 ])
-Comment.create!([
-  {name: "Joseph Mugwaneza", body: "This is awesome", post_id: 11},
-  {name: "Plante Josuse", body: "you wrote a wonderful post bro", post_id: 11}
-])
 Order.create!([
   {user_id: 4, subtotal: nil, tax: nil, total: nil, completed: false}
 ])
@@ -32,4 +28,8 @@ UserCategory.create!([
   {user_type: "admin"},
   {user_type: "seller"},
   {user_type: "buyer"}
+])
+Comment.create!([
+  {name: "Joseph Mugwaneza", body: "This is awesome", post_id: 11},
+  {name: "Plante Josuse", body: "you wrote a wonderful post bro", post_id: 11}
 ])

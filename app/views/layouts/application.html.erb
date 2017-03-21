@@ -5,66 +5,184 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Barrio|Josefin+Sans|Sansita" rel="stylesheet"> 
     <%= csrf_meta_tags %>
-
+    <link  href="https://fonts.googleapis.com/css?family=Chewy|
+    Permanent+Marker" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link  href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" >
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-      <div id="flipkart-navbar">
-        <div class="container">
-            <div class="row row1">
-                <ul class="largenav pull-right">
-
-                    <% if current_user %>
-                         <h4><%= link_to "Logout", "logout", class: "glyphicon glyphicon-log-out", method: :delete %></h4>
-                    <% else %>
-                        <h4><%= link_to "Sign in", "/login", class: "glyphicon glyphicon-log-in"%></h4>
-                    <% end %>
-                </ul>
-            </div>
-            <% if current_user %>
-            <div class="row row2">
-                <div class="col-sm-2">
-                    <p><span class="glyphicon glyphicon-user" aria-hidden="true"><%= current_user.name %></span></p>  
-                </div>
-                <% end %>
-                <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
-                    <div class="row">
-                        <%= form_tag "/searches", method: :post do %>
-                        <input class="flipkart-navbar-input col-xs-11" type="text" placeholder="Search for Products, Brands and more" name="search_query">
-                        <button type="submit" class="flipkart-navbar-button col-xs-1">
-                            <svg width="15px" height="15px">
-                                <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <% end %>
-                </div>
-              
-                <ul class="nav navbar-nav navbar-right">
-                <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span>0 - Products<span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-cart" role="menu">
-              <li>
-                  <span class="item">
-                    <span class="item-left">
-                        <img src="Product Image" alt="" />
-                        <span class="item-info">
-                            <span>Product name </span>
-                            <span>Product Price</span>
-                        </span>
-                    </span>
-                    <span class="item-right">
-                        <button class="btn btn-xs btn-danger pull-right">x</button>
-                    </span>
-                    </span>
-              </li>
-              <li>
-            </div>
-
-        </div>
-    </div>
+      
   </head>
+ <body>
+<!-- begin navbar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img class="animated infinite rubberBand" src="assets/logo.png" width="40px" height="40px"></a>
+      <a class="navbar-brand" href="#">MadeinRwanda<span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">HOME<span class="sr-only">(current)</span></a></li>
+        <li><a href="/posts">BLOG</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Women's Shoes</a></li>
+            <li><a href="#">Women's Dresses</a></li>
+            <li><a href="#">Women's Bag</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Men's Shoes</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">T-Shirt</a></li>
+          </ul>
+        </li>
+      </ul>
+
+       <%= form_tag "/searches", class: "navbar-form navbar-right", method: :post do %>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="search_input">
+        </div>
+        <button><a class="btn-floating btn-small blue"><i class="fa fa-search"></i></a></button>
+      <% end %>
+
+      <!-- <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="search_query">
+        </div>
+       <button><a class="btn-floating btn-small blue"><i class="fa fa-search"></i></a></button>
+      </form> -->
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+    <input type="checkbox" id="menuToggle"> 
+    <label for="menuToggle" class="menu-icon">&#9776;</label>
+
+<header>
+  <div id="brand">Let's Enjoy What We Make</div>
+  <style type="text/css">
+            * { padding: 0; margin: 0; }
+            body {
+              font-family: sans-serif;
+            }
+
+            a {
+              text-decoration: none;
+              color:#00A5CC;
+            }
+            
+            li {
+              list-style-type: none;
+            }
+
+            header {
+              width: 100%;
+              height: 50px;
+              margin: auto;
+              border-bottom: 1px solid #EEE;
+            }
+
+            #brand {
+              float: left;
+              line-height: 50px;
+              color: #E5DAC0;
+              font-size: 25px;
+              font-weight: bolder;
+            }
+
+            nav {
+              width: 100%;
+              text-align: center;
+            }
+
+            .menu a {
+              display: block; 
+              padding: 15px 0; 
+              border-bottom: 1px solid #B49755;
+              color: #F0EADC;
+              text-decoration: none;
+            }
+
+            .menu li:last-child a {
+              border-bottom: none;
+            }
+
+            .menu a:hover {
+              background: #E5DAC0;
+              color: #FFF;
+            }
+
+            .menu {
+              width: 240px;
+              height: 100%;
+              z-index: 1;
+              position: absolute;
+              background: #D9C9A3;
+              left: -240px;
+              transition: all .3s ease-in-out;
+              -webkit-transition: all .3s ease-in-out;
+              -moz-transition: all .3s ease-in-out;
+              -ms-transition: all .3s ease-in-out;
+              -o-transition: all .3s ease-in-out;
+
+            }
+
+            .menu-icon {
+              padding: 10px 20px;
+              background: #E5DAC0;
+              color: #987D3E;
+              cursor: pointer;
+              float: left;
+              margin-top: 4px;
+              border-radius: 5px;
+            }
+            #menuToggle {
+              display: none;
+
+            }
+
+            #menuToggle:checked ~ .menu {
+              position: absolute;
+              left: 0;
+            }
+
+  </style> 
+</header>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">ABOUT</a></li>
+      <li><a href="#">WORK</a></li>
+      <li><a href="#">INSPIRATION</a></li>
+      <li><a href="#">BLOG</a></li>
+      <li><a href="#">CONTACT</a></li>
+
+    </ul>
+  </nav>
+
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script> 
+        $(function(){
+            $('#test').popover();​
+        });
+         </script>
 
   <body>
     <% flash.each do |name, msg| %>
