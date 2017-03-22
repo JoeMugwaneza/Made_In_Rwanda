@@ -1,33 +1,38 @@
 <h1>Create a Product</h1>
-<div class="container-fluid">
+
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+
  <%= form_tag "/products", method: :post, multipart: true do %>
    <div>
-    Name of a Product <br> <input type="text" name="name" placeholder="Product Name">
+    <strong>Name of a Product:</strong> <br> <input class="form_control" type="text" name="name" placeholder="Product Name">
    </div>
-   <strong>Category</strong>
-        <select name="category">
-           <% Category.all.each do |category| %>
-              <option value="<%= category.name %>"><%= category.name %></option>
-            <% end %>     
+   <strong>Category:</strong><br>
+        <select class="form_control" name="category">
+          <% Category.all.each do |category| %>
+            <option><%= category.name %></option>
+          <% end %>     
         </select> <br>
    <div>
-     <p>Description</p>
-     <textarea rows="4" cols="50" name="description" placeholder="Describe the product here........."></textarea>
+     <strong>Description:</strong> <br>
+     <textarea rows="4" cols="50" class="form_control" name="description" placeholder="Describe the product here........."></textarea>
    </div>
    <div>
-     Quantity <br> <input type="integer" name="quantity" placeholder="Quantity in Store">
+     <strong>Quantity:</strong> <br> <input class="form_control" type="integer" name="quantity" placeholder="Quantity in Store">
    </div>
    <div>
-     Price <br> <input type="integer" name="price" placeholder="Product Price">
+     <strong>Price:</strong> <br> <input class="form_control" type="integer" name="price" placeholder="Product Price">
    </div>
    <div> <br>
-     Uplaod Image<input type="file" name="image" accept="image/*;capture=camera">
+     <strong>Upload Image:</strong><input class="form_control" type="file" name="image" accept="image/*;capture=camera">
    </div>
    
-   <br><input type="submit" value="New Product"> 
-    <%= link_to "back", root_path, class: "btn btn-default" %>
-   <% end %>
-    
+   <br><input type="submit" value="New Product">
+  <% end %>
+</div>
+</div>
 </div>
 
 
+    

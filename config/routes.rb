@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :seller_profiles
+
   get "/users", to: 'users#index'
   get "/signup", to: 'users#new'
   post "/users", to: 'users#create'

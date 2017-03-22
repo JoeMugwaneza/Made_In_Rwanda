@@ -6,6 +6,9 @@
     Name of a Product: <input type="text" name="name" value="<%= @product.name %>"> 
   </div>
   <div>
+    Quantity <br> <input type="integer" name="quantity" value="<%= @product.quantity %>">
+  </div>
+  <div>
     <p>Description</p>
      <textarea rows="4" cols="50" name="description"><%= @product.description %></textarea>
   </div>

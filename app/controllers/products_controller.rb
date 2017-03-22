@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+   before_action :authenticate_user!, except: [:index, :show, :search]
+
   def index
     @products = Product.all.order("created_at DESC")
   end 
@@ -22,9 +24,9 @@ class ProductsController < ApplicationController
       )
     @product.user_id = current_user.id
     if @product.save
-      
+        CategoryProduct.create(product_id: @product.id, category_id: params[:category])
       flash[:success] = "Successfully created Product"
-      redirect_to "/products"
+      redirect_to "/seller_profiles/#{current_user.seller_profile.id}"
     else 
       render 'new'
     end 

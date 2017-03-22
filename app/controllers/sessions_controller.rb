@@ -2,28 +2,19 @@ class SessionsController < ApplicationController
 
   def new
   end
-
+   
   def create
-    role = params[:role_id].to_i
-    user = User.find_by(email: params[:email]) 
+    user = User.find_by(email: params[:email])
 
-    if user && user.authenticate(params[:password]) && user.roles.first.user_category.id == role && 2
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:warning] = "Successfully logged in"
-
-      redirect_to "/users"
-
-    elsif user && user.authenticate(params[:password]) && user.roles.first.user_category.id == role && 3
-      session[:user_id] = user.id
-      flash[:warning] = "Successfully logged in"
-
+      flash[:success] = "Successfully logged in!"
       redirect_to "/products"
-    else
-      flash[:warning] = "Invalide email or password"
+    else 
+      flash[:warning] = "Invalid email or password"
       redirect_to "/login"
     end 
-  end
-
+  end 
 
   def destroy
     session[:user_id] = nil

@@ -22,9 +22,10 @@
               
             </div>
             <div>
+            <% if current_user.admin %>
             <%= link_to "Edit a Product", edit_product_path, class: "btn btn-warning" %> 
             <%= link_to "Delete a Product", product_path, method: :delete, data: {confirm: "Do you want to delete this product?"}, class: "btn btn-danger" %>
-              
+              <% end %>
             </div>
 
           </div>
@@ -41,7 +42,7 @@
               <span class="review-no">41 reviews</span>
             </div>
             <p class="product-description"><%= @product.description %></p>
-            <h4 class="price">Current price: Rwf <span><%= @product.price %></span></h4>
+            <h4 class="price">Current price:<span> Rwf <%= @product.price %></span></h4>
             <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
             <div>
             <h5 class="colors">colors:
@@ -53,7 +54,12 @@
             </div>
                 <%= form_tag "/carted_products", method: :post do %>
                   <div>
-                    Quantity: <input type="text" name="quantity" placeholder="quantity"> <select></select>
+                  Quantity:
+                  <select name="quantity">
+                    <option><%= 1.upto(@product.quantity) do |i| %></option>
+                    <option><%= i %></option>
+                    <% end %>
+                  </select>
                   </div>
                   <div>
                     <input type="hidden" name="product_id" value="<%= @product.id %>">
