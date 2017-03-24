@@ -8,7 +8,7 @@
         <th>Quantity</th>
         <th>Price Per Product</th>
       </tr>
-      <%= @order.carted_products.each do |carted_product| %>
+      <% @order.carted_products.each do |carted_product| %>
       <tr>
         <td><%= carted_product.product.name %></td>
         <td><%= carted_product.quantity %></td>
@@ -16,12 +16,14 @@
       </tr>
       <% end %>
     </table>
-
-    <ul>
-      <li>Order Number <%= @order.id %></li>
-      <li>Subtotal <%= @order.subtotal %></li>
-      <li>tax <%= @order.tax %></li>
-      <li>Total <%= @order.total %></li>
-    </ul>
+    <table class="table table-space">
+      
+        <ul>
+          <li><strong>Order:</strong> <%= @order.id %></li>
+          <li><strong>Subtotal:</strong> <%= @order.subtotal %></li>
+          <li><strong>Tax:</strong> <%= @order.tax %></li>
+          <li><strong>Total:</strong> <%= @order.total %></li>
+        </ul>
+    </table>
   </div>
 </div>

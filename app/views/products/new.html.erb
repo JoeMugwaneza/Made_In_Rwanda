@@ -11,7 +11,7 @@
    <strong>Category:</strong><br>
         <select class="form_control" name="category">
           <% Category.all.each do |category| %>
-            <option><%= category.name %></option>
+            <option value="<%= category.id %>"><%= category.name %></option>
           <% end %>     
         </select> <br>
    <div>

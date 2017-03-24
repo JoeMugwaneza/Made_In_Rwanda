@@ -1,25 +1,88 @@
-<h1><%= current_user.seller_profile.company_name %></h1>
-<h1 style="text-align: center;"></h1>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-  <% if current_user.seller_profile%>
-  <%= button_to "Add New Product", "/products/new", class: "btn btn-primary", method: :get %>
-<% end %>
-<table class="table-striped">
-  <% @products.each_slice(3) do |products| %>
-    <div class="row">
-    <div class="item">
-        <% products.each do |product| %>
-          <div class="col-md-4">
-            <h2><%= link_to product.name, product %></h2>
-            <img src="<%= product.image_url %>" class="img-responsive" style="width: 200px; height: 250px;">
-            <p><b>Description</b>: <%= product.description %></p>
-            <data> <b>Price</b>: <%= product.price %></data>
-          </div>
-        <% end %>
-      
-    </div>
-    </div>
-  <% end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 50%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: <%= current_user.seller_profile.latitude %>, lng: <%= current_user.seller_profile.longitude %>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: '<%= current_user.seller_profile.company_name %>'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMQwmqQvi17vAwEVRyQp7muwnlRoYxFv0&callback=initMap">
+    </script>
+    
+            <h1><%= current_user.seller_profile.company_name %></h1>
+        <img src="<%= current_user.seller_profile.image_url %>">
+        <h1 style="text-align: center;"></h1>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+        <table class="table-striped">
+          <% @products.each_slice(3) do |products| %>
+            <div class="row">
+            <div class="item">
+                <% products.each do |product| %>
+                  <div class="col-md-4">
+                    <h4><%= link_to product.name, product %></h4>
+                    <img src="<%= product.image_url %>" class="img-responsive" style="width: 200px; height: 250px;">
+                    <!-- <p><b>Description</b>: <%= product.description %></p> -->
+                    <data> <b>Price</b>: <%= product.price %></data>
+                  </div>
+                <% end %>
+          </table>
+              <% if current_user.seller_profile%>
+                <%= button_to "Add New Product", "/products/new", class: "btn btn-primary", method: :get %>
+              <% end %>
+            </div>
+              <%= will_paginate @products %>
+            </div>
+          <% end %>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   

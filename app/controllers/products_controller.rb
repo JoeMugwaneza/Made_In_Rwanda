@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
    before_action :authenticate_user!, except: [:index, :show, :search]
 
   def index
-    @products = Product.all.order("created_at DESC")
+    @products = Product.paginate(:page => params[:page], :per_page => 3).order("created_at DESC")
   end 
 
   def show 
@@ -22,8 +22,9 @@ class ProductsController < ApplicationController
       price: params[:price],
       image_url: response["data"]["img_url"]
       )
-    @product.user_id = current_user.id
+    @product.seller_profile_id = current_user.seller_profile.id
     if @product.save
+      
         CategoryProduct.create(product_id: @product.id, category_id: params[:category])
       flash[:success] = "Successfully created Product"
       redirect_to "/seller_profiles/#{current_user.seller_profile.id}"

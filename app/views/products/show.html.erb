@@ -22,7 +22,7 @@
               
             </div>
             <div>
-            <% if current_user.admin %>
+            <% if current_user.admin || current_user.seller_profile %>
             <%= link_to "Edit a Product", edit_product_path, class: "btn btn-warning" %> 
             <%= link_to "Delete a Product", product_path, method: :delete, data: {confirm: "Do you want to delete this product?"}, class: "btn btn-danger" %>
               <% end %>
@@ -31,6 +31,7 @@
           </div>
           <div class="details col-md-6">
             <h3 class="product-title"><%= @product.name %></h3>
+            <h3 class="product-title">Shop Name: <%= link_to @product.seller_profile.company_name, "/seller_profiles/#{current_user.seller_profile.id}"  %></h3>
             <div class="rating">
               <div class="stars">
                 <span class="fa fa-star checked"></span>
@@ -55,8 +56,8 @@
                 <%= form_tag "/carted_products", method: :post do %>
                   <div>
                   Quantity:
-                  <select name="quantity">
-                    <option><%= 1.upto(@product.quantity) do |i| %></option>
+                  <select style="width: 200px;" name="quantity">
+                    <option"><%= 1.upto(@product.quantity) do |i| %></option>
                     <option><%= i %></option>
                     <% end %>
                   </select>

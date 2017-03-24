@@ -38,7 +38,7 @@
         <li class="active"><a href="/">HOME<span class="sr-only">(current)</span></a></li>
         <li><a href="/posts">BLOG</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ALL CATEGORIES<span class="caret"></span></a>
           
           <ul class="dropdown-menu">
             <% Category.all.each do |category| %>
@@ -62,13 +62,15 @@
        <button><a class="btn-floating btn-small blue"><i class="fa fa-search"></i></a></button>
       </form> -->
 
+    
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
 
 
-    <input type="checkbox" id="menuToggle"> 
+    <!-- <input type="checkbox" id="menuToggle"> 
     <label for="menuToggle" class="menu-icon">&#9776;</label>
 
 <header>
@@ -172,7 +174,7 @@
       <li><a href="#">CONTACT</a></li>
 
     </ul>
-  </nav>
+  </nav> -->
 
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -183,10 +185,19 @@
          </script>
 
   <body>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: "alert alert-info " %>
-
-      <% end %>
+       <p>
+    <% flash.each do |key, value| %>
+    <% alert_class = case key
+    when :notice then "success"
+    when :alert then "danger"
+    else key
+     end %>
+     <%= content_tag :div, class: "alert alert-#{alert_class}" do %>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <%= value %>
+     <% end %>
+     <% end %>
+   </p>
     <%= yield %>
   </body>
 </html>

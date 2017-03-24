@@ -1,12 +1,28 @@
 <div class="container">
-  <% if @products.any? %>
-  <h3>Search Results:</h3>
- 
-    <% @products.each do |product| if @products.any?%>
-      <%= product.name %>
-      <%= product.description %>
-      <img src="<%= product.image_url %>">
-    <% end %>
+<% if @products.any? %>
+<p>Search Results:</p>
+<h1 style="text-align: center;"></h1>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+<table class="table-striped">
+
+  <% @products.each_slice(3) do |products| %>
+    <div class="row">
+    <div class="item">
+        <% products.each do |product| %>
+          <div class="col-md-4">
+            <h4><%= link_to product.name, product %></h4>
+            <img src="<%= product.image_url %>" class="img-responsive" style="width: 200px; height: 250px;">
+            <p>by <%= product.seller_profile.company_name %></p>
+            <!-- <p><b>Description</b>: <%= product.description %></p> -->
+            <data> <b>Price</b>: Rwf <%= product.price %></data>
+          </div>
+        <% end %>
+      
+    </div>
+    </div>
   <% end %>
-  <% end %>
+<% end %>
 </div>

@@ -1,4 +1,5 @@
 class SellerProfile < ApplicationRecord
   belongs_to :user, optional: true
-  has_many :products, through: :users
+  has_many :products
+
 end

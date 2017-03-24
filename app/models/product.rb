@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   validates :name, presence: true 
   validates :description, presence: true
 
-  belongs_to :seller_profiles, optional: true
+  belongs_to :seller_profile, optional: true
 
 
   def tax
