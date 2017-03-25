@@ -1,22 +1,31 @@
-<h1>Edit a Product</h1>
 
-<div class="container-fluid">
-  <%= form_tag "/products/#{@product.id}", method: :patch do %>
-  <div>
-    Name of a Product: <input type="text" name="name" value="<%= @product.name %>"> 
+<div class="container">
+  <div class="row">
+   <div class="col-md-6">
+
+        <h1>Edit a Product</h1>
+        <%= form_tag "/products/#{@product.id}",multipart: true, method: :patch do %>
+        <div>
+          Name of a Product: <input type="text" name="name" value="<%= @product.name %>"> 
+        </div>
+        <div>
+          Quantity <br> <input type="integer" name="quantity" value="<%= @product.quantity %>">
+        </div>
+        <div>
+          <p>Description</p>
+           <textarea rows="4" cols="50" name="description"><%= @product.description %></textarea>
+        </div>
+        <div>
+          Price: <input type="integer" name="price" value="<%= @product.price %>">
+        </div>
+        <div> <br>
+           <strong>Upload Image:</strong><input class="form_control" type="file" name="image" value="@product.image">
+         </div>
+        <div>
+          <input type="submit" value="Update Product"> <%= link_to "Cancel", product_path, class: "btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    Quantity <br> <input type="integer" name="quantity" value="<%= @product.quantity %>">
-  </div>
-  <div>
-    <p>Description</p>
-     <textarea rows="4" cols="50" name="description"><%= @product.description %></textarea>
-  </div>
-  <div>
-    Price: <input type="integer" name="price" value="<%= @product.price %>">
-  </div>
-  <div>
-    <input type="submit" value="Update a Product"> <%= link_to "Cancel", product_path, class: "btn btn-default" %>
-  </div>
-<% end %>
 </div>
+ 

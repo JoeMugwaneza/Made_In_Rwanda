@@ -1,10 +1,9 @@
 class SellerProfilesController < ApplicationController
 
   def index
-    # @users =  User.joins(:seller_profile).where('seller_profiles.user_id IS NOT NULL').distinct
+    @sellers =  User.joins(:seller_profile).where('seller_profiles.user_id IS NOT NULL').distinct
     
   end
-
   def show
     @products = current_user.seller_profile.products.all.paginate(:page => params[:page], :per_page => 3)
 
@@ -19,8 +18,6 @@ class SellerProfilesController < ApplicationController
     street_code = params[:street_code]
     coordinates = Geocoder.coordinates(street_code)
 
-    # response = Unirest.post("http://uploads.im/api?upload", parameters: {file: params[:image]}).body
-          # image_url: response["data"]["img_url"],
     @seller_profile = SellerProfile.new(
       company_name: params[:company_name],
       company_email: params[:company_email],
@@ -30,7 +27,8 @@ class SellerProfilesController < ApplicationController
       longitude: coordinates[1],
       location: params[:location],
       contact: params[:contact],
-      user_id: current_user.id
+      user_id: current_user.id,
+      image: params[:image]
       )
 
       if @seller_profile.save
@@ -46,8 +44,7 @@ class SellerProfilesController < ApplicationController
       street_code = params[:street_code]
       coordinates = Geocoder.coordinates(street_code)
 
-      # response = Unirest.post("http://uploads.im/api?upload", parameters: {file: params[:image]}).body
-      
+  
        @seller_profile.update(
         company_name: params[:company_name],
         company_email: params[:company_email],
@@ -55,12 +52,10 @@ class SellerProfilesController < ApplicationController
         latitude: coordinates[0],
         longitude: coordinates[1],
         location: params[:location],
-        contact: params[:contact]
+        contact: params[:contact],
+        image: params[:image]
         )
 
       redirect_to "/seller_profiles/#{@seller_profile.id}}"
     end
 end
-
-
- # image_url: response["data"]["img_url"],

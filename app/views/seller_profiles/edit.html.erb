@@ -3,7 +3,7 @@
    <div class="col-md-6">
 
    
-      <%= form_tag "/seller_profiles/#{current_user.seller_profile.id}", method: :patch do %>
+      <%= form_tag "/seller_profiles/#{current_user.seller_profile.id}", multipart: true, method: :patch do %>
       <form>
       <div id="fullscreen_bg" class="fullscreen_bg"/>
       <form class="form-signin"><br>
@@ -19,8 +19,8 @@
 
         <h4>Contact</h4><input type="text" class="form-control" name="contact" value="<%= current_user.seller_profile.contact %>">
         <div><br>
-      <!--  <strong>Profile Picture</strong> <br><input type="file" name="image" accept="image/*;capture=camera" value="current_user.seller_profile.image_url"> -->
-     </div> <br>
+          <strong>Profile Picture:</strong> <br><input type="file" name="image" value="current_user.seller_profile.image">
+        </div> <br>
          <button class="btn btn-lg btn-primary btn-block" type="submit">
           Update Profile
         </button>

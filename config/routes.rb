@@ -2,10 +2,22 @@ Rails.application.routes.draw do
   root 'products#index'
   
   resources :products
+  # get "products", to: 'products#index'
+  # get "products/new", to: 'products#new'
+  # get "products/:id/edit", to: 'products#edit'
+  # post "products", to: 'products#create'
+  # get "products/:id", to: 'products#show'
+  # patch "products/:id/edit", to: 'products#update'
+
   resources :posts do
     resources :comments
   end
 
+  # get "/seller_profiles", to: 'seller_profiles#index'
+  # get "/seller_profiles/new", to: 'seller_profiles#new'
+  # get "/seller_profiles/:id", to: 'seller_profiles#show'
+  # post "/seller_profiles/:id", to: 'seller_profiles#create'
+  
   resources :seller_profiles
 
   get "/users", to: 'users#index'

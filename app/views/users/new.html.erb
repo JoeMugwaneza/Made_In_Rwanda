@@ -2,8 +2,12 @@
   <h3>Sign up Form</h3>
     <%= form_tag "/users", method: :post do %>
         <div class="form-group">        
-          <label style="font-size: 16px;"><b>User Name</b></label>
-          <input style="width: 300px;" type="name" class="form-control" name="name" required>
+          <label style="font-size: 16px;"><b>First Name</b></label>
+          <input style="width: 300px;" type="name" class="form-control" name="first_name" required>
+        </div>
+        <div class="form-group">        
+          <label style="font-size: 16px;"><b>Last Name</b></label>
+          <input style="width: 300px;" type="name" class="form-control" name="last_name" required>
         </div>
         
         <div class="form-group">

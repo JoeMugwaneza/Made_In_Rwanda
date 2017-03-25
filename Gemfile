@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootswatch-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'geocoder', '~> 1.4', '>= 1.4.3'
+gem 'paperclip', '~> 5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

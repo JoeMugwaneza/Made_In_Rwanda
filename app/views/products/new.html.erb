@@ -1,38 +1,42 @@
-<h1>Create a Product</h1>
 
-<div class="container">
-<div class="row">
-<div class="col-md-6">
+ <div class="container">
+  <div class="row">
+   <div class="col-md-6">
 
- <%= form_tag "/products", method: :post, multipart: true do %>
-   <div>
-    <strong>Name of a Product:</strong> <br> <input class="form_control" type="text" name="name" placeholder="Product Name">
-   </div>
-   <strong>Category:</strong><br>
-        <select class="form_control" name="category">
-          <% Category.all.each do |category| %>
-            <option value="<%= category.id %>"><%= category.name %></option>
-          <% end %>     
-        </select> <br>
-   <div>
-     <strong>Description:</strong> <br>
-     <textarea rows="4" cols="50" class="form_control" name="description" placeholder="Describe the product here........."></textarea>
-   </div>
-   <div>
-     <strong>Quantity:</strong> <br> <input class="form_control" type="integer" name="quantity" placeholder="Quantity in Store">
-   </div>
-   <div>
-     <strong>Price:</strong> <br> <input class="form_control" type="integer" name="price" placeholder="Product Price">
-   </div>
-   <div> <br>
-     <strong>Upload Image:</strong><input class="form_control" type="file" name="image" accept="image/*;capture=camera">
-   </div>
-   
-   <br><input type="submit" value="New Product">
-  <% end %>
+    <h1>Create a Product</h1>
+
+       <%= form_tag "/products", method: :post, multipart: true do %>
+         <div>
+          <strong>Name of a Product:</strong> <br> <input class="form_control" type="text" name="name" placeholder="Product Name">
+         </div>
+         <strong>Category:</strong><br>
+              <select class="form_control" name="category">
+                <% Category.all.each do |category| %>
+                  <option value="<%= category.id %>"><%= category.name %></option>
+                <% end %>     
+              </select> <br>
+         <div>
+           <strong>Description:</strong> <br>
+           <textarea rows="4" cols="50" class="form_control" name="description" placeholder="Describe the product here........."></textarea>
+         </div>
+         <div>
+           <strong>Quantity:</strong> <br> <input class="form_control" type="integer" name="quantity" placeholder="Quantity in Store">
+         </div>
+         <div>
+           <strong>Price:</strong> <br> <input class="form_control" type="integer" name="price" placeholder="Product Price">
+         </div>
+         <div> <br>
+           <strong>Upload Image:</strong><input class="form_control" type="file" name="image">
+         </div>
+         
+         <br><input type="submit" value="New Product">
+        <% end %>
+
+
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
 
 
     
