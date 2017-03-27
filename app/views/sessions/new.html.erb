@@ -1,43 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 
-<div class="container-fluid">
-  
+</head>
+<body>
+
+<div class="login">
+  <img src="assets/logo.png">
+
   <%= form_tag "/login", method: :post do %>
-   <!--Form with header-->
-    <div class="card">
-      <div class="card-block">
+    <div class="form-input">
+      <input type="email" name="email" placeholder="Enter Email">
+    </div>
 
-            <!--Header-->
-        <div class="form-header  purple darken-4">
-          <h3><i class="fa fa-lock"></i> Login:</h3>
-        </div>
-
-            <!--Body-->
-        <div class="md-form">
-          <i class="fa fa-envelope prefix"></i>
-          <input type=email id="form2" class="form-control" name="email">
-          <label for="form2">Your Email</label>
-        </div>
-
-        <div class="md-form">
-          <i class="fa fa-lock prefix"></i>
-          <input type="password" id="form4" class="form-control" name="password">
-          <label for="form4">Your password</label>
-        </div>
-        <div class="text-center">
-          <button class="btn btn-deep-purple">Login</button>
-         </div>
-
-        </div>
-
-        <!--Footer-->
-        <div class="modal-footer">
-          <div class="options">
-              <p>Not a member? <a href="/signup">Sign Up</a></p>
-              <p>Forgot <a href="#">Password?</a></p>
-          </div>
-        </div>
-
+    <div class="form-input">
+      <input type="password" name="password" placeholder="Enter Password">
+    </div>
+    <input type="submit" name="submit" value="LOGIN" class="btn-login"><br>
+    <br><p class="paragraphs">Don't you have account? <a class="button" href="/signup">Signup</a></p>
+ <% end %>
 </div>
-<% end %>
-<!--/Form with header-->
-</div>
+
+</body>
+</html>

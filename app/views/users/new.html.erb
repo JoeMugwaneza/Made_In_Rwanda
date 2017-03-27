@@ -1,35 +1,37 @@
-<div class="container-fluid">
-  <h3>Sign up Form</h3>
-    <%= form_tag "/users", method: :post do %>
-        <div class="form-group">        
-          <label style="font-size: 16px;"><b>First Name</b></label>
-          <input style="width: 300px;" type="name" class="form-control" name="first_name" required>
-        </div>
-        <div class="form-group">        
-          <label style="font-size: 16px;"><b>Last Name</b></label>
-          <input style="width: 300px;" type="name" class="form-control" name="last_name" required>
-        </div>
-        
-        <div class="form-group">
-          <label style="font-size: 16px;"><b>Email</b></label>
-          <input  type="email"  class="form-control" style="width: 300px;" name="email" required>        
-        </div>
+ <!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 
-        <div class="form-group">
-          <label style="font-size: 16px;"><b>Password</b></label>
-          <input type="password" class="form-control" style="width: 300px;" name="password" required>        
-        </div>
+</head>
+<body>
 
-        <div class="form-group">
-          <label style="font-size: 16px;"><b>Password Confirmation</b></label>
-          <input type="password" class="form-control" name="password_confirmation" style="width: 300px;" required="">      
-        </div>
-        <input type="checkbox" checked="checked"> Remember Me
-        
-        <div class="clearfix">
-          <input type="submit" value="Create an account">
-          
-          <p>Already have an account? <a href="/login"> login here</a></p>
-        </div> 
-      <% end %>
+<div class="signup">
+  <img src="assets/logo.png">
+
+  <%= form_tag "/users", method: :post do %>
+    <div class="form-input">
+      <input type="name" name="first_name" placeholder="Enter First Name ">
+    </div>
+    <div class="form-input">
+      <input type="name" name="last_name" placeholder="Enter Last Name">
+    </div>
+    <div class="form-input">
+      <input type="email" name="email" placeholder="Enter Email">
+    </div>
+
+    <div class="form-input">
+      <input type="password" name="password" placeholder="Enter Password">
+    </div>
+    <div class="form-input">
+      <input type="password" name="password_confirmation" placeholder="Re-enter Password">
+    </div>
+    <input type="submit" name="submit" value="Signup" class="btn-signup"><br>
+    <br><p class="paragraphs">Do you have account? <a class="button" href="/login">LOGIN</a></p>
+ <% end %>
 </div>
+
+</body>
+</html>

@@ -1,28 +1,36 @@
 <div class="container">
-<% if @products.any? %>
-<p>Search Results:</p>
 <h1 style="text-align: center;"></h1>
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
 <table class="table-striped">
+<% if @products.any?%>
+  <p>Search Results:</p>
 
-  <% @products.each_slice(3) do |products| %>
-    <div class="row">
-    <div class="item">
-        <% products.each do |product| %>
-          <div class="col-md-4">
-            <h4><%= link_to product.name, product %></h4>
-            <img src="<%= product.image_url %>" class="img-responsive" style="width: 200px; height: 250px;">
-            <p>by <%= product.seller_profile.company_name %></p>
-            <!-- <p><b>Description</b>: <%= product.description %></p> -->
-            <data> <b>Price</b>: Rwf <%= product.price %></data>
-          </div>
-        <% end %>
-      
-    </div>
-    </div>
-  <% end %>
+    <% @products.each_slice(3) do |products| %>
+      <div class="row">
+      <div class="item">
+          <% products.each do |product| %>
+            <div class="col-md-4">
+              <h4><%= link_to product.name, product %></h4>
+              <img src="<%= product.image %>" class="img-responsive" style="width: 200px; height: 250px;">
+              <p>by <%= product.seller_profile.company_name %></p>
+              <!-- <p><b>Description</b>: <%= product.description %></p> -->
+              <data> <b>Price</b>: Rwf <%= product.price %></data>
+            </div>
+          <% end %>
+        
+      </div>
+      </div>
+    <% end %>
+  <% elsif @categories.any? %>
+    <% @categories.each do|category| %>
+      <%= link_to category.name, products_path(category: category.name) %>
+    <% end %>
+  <% else @seller_profiles.any? %>
+    <% @seller_profiles.each do |seller_profile| %>
+      <%= link_to seller_profile.company_name, "/seller_profiles/#{seller_profile.id}" %>
+    <% end %>
 <% end %>
 </div>

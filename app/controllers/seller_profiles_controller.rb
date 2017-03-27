@@ -5,7 +5,7 @@ class SellerProfilesController < ApplicationController
     
   end
   def show
-    @products = current_user.seller_profile.products.all.paginate(:page => params[:page], :per_page => 3)
+    @products = current_user.seller_profile.products.all.paginate(:page => params[:page], :per_page => 8).order("created_at DESC")
 
   end
 
@@ -57,5 +57,13 @@ class SellerProfilesController < ApplicationController
         )
 
       redirect_to "/seller_profiles/#{@seller_profile.id}}"
+    end
+
+
+    def destroy
+      @product = Product.find_by(id: params[:id])
+      @product.destroy
+
+      redirect_to "/seller_profiles/#{current_user.seller_profile.id}"
     end
 end

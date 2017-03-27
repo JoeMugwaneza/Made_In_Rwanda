@@ -1,13 +1,16 @@
 class SearchesController < ApplicationController
 
    def index
-     search_query = params[:search_query]
-     @products = Product.where("name LIKE? OR description LIKE?", "%#{search_query}%", "%#{search_query}%")
-     @posts = Post.where("title LIKE? OR body LIKE?", "%#{search_query}%", "%#{search_query}%")
+     search_query = params[:search_input]
+     @products = Product.where("name ILIKE? OR description ILIKE?", "%#{search_query}%", "%#{search_query}%").all
+     
+     @categories = Category.where("name ILike?","%#{search_query}%").all
+     @seller_profiles = SellerProfile.where("company_name ILIKE? OR location ILIKE?", "%#{search_query}%", "%#{search_query}%").all
 
-     if @products.empty? || @posts.empty?
-       flash[:info] = "No results match #{search_query}"
-     end
-      render :index
+      if @products.any? || @categories.any? || @seller_profiles.any?
+        render :index
+      else
+        flash[:info] = "No results match #{search_query}"
+      end
    end 
 end

@@ -4,8 +4,15 @@
    <div class="col-md-6">
 
         <h1>Edit a Product</h1>
-        <%= form_tag "/products/#{@product.id}",multipart: true, method: :patch do %>
-        <div>
+        <%= form_tag "/products/#{@product.id}", multipart: true, method: :patch do %>
+
+         <strong>Category:</strong><br>
+            <select class="form_control" name="category">
+              <% Category.all.each do |category| %>
+                <option value="<%= category.id %>"><%= category.name %></option>
+              <% end %>     
+            </select> <br>
+        <div><br>
           Name of a Product: <input type="text" name="name" value="<%= @product.name %>"> 
         </div>
         <div>
@@ -19,7 +26,7 @@
           Price: <input type="integer" name="price" value="<%= @product.price %>">
         </div>
         <div> <br>
-           <strong>Upload Image:</strong><input class="form_control" type="file" name="image" value="@product.image">
+          Upload Image:<input class="form_control" type="file" name="image" value="@product.image">
          </div>
         <div>
           <input type="submit" value="Update Product"> <%= link_to "Cancel", product_path, class: "btn btn-default" %>

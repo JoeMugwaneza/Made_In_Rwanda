@@ -6,15 +6,15 @@
     <h1>Create a Product</h1>
 
        <%= form_tag "/products", method: :post, multipart: true do %>
-         <div>
-          <strong>Name of a Product:</strong> <br> <input class="form_control" type="text" name="name" placeholder="Product Name">
-         </div>
          <strong>Category:</strong><br>
               <select class="form_control" name="category">
                 <% Category.all.each do |category| %>
                   <option value="<%= category.id %>"><%= category.name %></option>
                 <% end %>     
               </select> <br>
+         <div>
+          <strong>Name of a Product:</strong> <br> <input class="form_control" type="text" name="name" placeholder="Product Name">
+         </div>
          <div>
            <strong>Description:</strong> <br>
            <textarea rows="4" cols="50" class="form_control" name="description" placeholder="Describe the product here........."></textarea>

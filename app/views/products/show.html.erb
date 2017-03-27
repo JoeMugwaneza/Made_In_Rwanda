@@ -24,7 +24,7 @@
             <div>
             <% if current_user.seller_profile || current_user.admin  %>
             <%= link_to "Edit a Product", "/products/#{@product.id}/edit", class: "btn btn-warning" %> 
-            <%= link_to "Delete a Product", "/", method: :delete, data: {confirm: "Do you want to delete this product?"}, class: "btn btn-danger" %>
+            <%= link_to "Delete a Product", seller_profile_path, method: :delete, data: {confirm: "Do you want to delete this product?"}, class: "btn btn-danger" %>
               <% end %>
             </div>
 
