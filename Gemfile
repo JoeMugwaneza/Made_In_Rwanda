@@ -11,6 +11,7 @@ gem 'rails', '~> 5.0.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootswatch-rails'
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'geocoder', '~> 1.4', '>= 1.4.3'
 gem 'paperclip', '~> 5.1'
 # Use postgresql as the database for Active Record

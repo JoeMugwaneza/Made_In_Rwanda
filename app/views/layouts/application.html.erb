@@ -48,7 +48,7 @@
         </li>
       </ul>
 
-       <%= form_tag "/searches", class: "navbar-form navbar-right", method: :post do %>
+       <%= form_tag "/searches", class: "navbar-form navbar-left" do %>
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="search_input">
         </div>
@@ -61,6 +61,25 @@
         </div>
        <button><a class="btn-floating btn-small blue"><i class="fa fa-search"></i></a></button>
       </form> -->
+       <ul class="nav navbar-nav navbar-right">
+       <!-- 
+
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul> -->
+         <% if current_user %>
+           <li><%= link_to "Cart", "/carted_products", class: "glyphicon glyphicon-shopping-cart"%></li> 
+            <li><%= link_to "Logout", "/logout", method: :delete %></li>
+            <% else %>
+            <li><%= link_to "Log In", "/login" %></li>
+            <% end %>
+        </li>
+      </ul>
 
     
 
@@ -201,17 +220,33 @@
     <%= yield %>
 
     <footer>
-      <div class="wrapper">
-        <nav>
-          <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Sellers</a></li>
-              <li><a href="#">Category</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">About</a></li>
-          </ul>
-        </nav>
+      <div class="site-footer">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-5">
+              <p style="float: right; font-size: 18px; color:  #99ff99;">Enjoy What You Make</p>
+              <h4 style="color:  #99ff99;">Contact Address</h4>
+                <address>
+                  Kigali Rwanda, <br>
+                  Made in Rwanda Products,<br>
+                  (+250)725085564
+                </address>
+              </div>
+              </div>
+
+            <div class="bottom-footer">
+              <div class="col-md-5">© Copyright MadeinRwanda <%= Time.now.year %></div>
+            <div class="col-md-7">
+                  <ul class="footer-nav">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Blog</a></li>
+                      <li><a href="#">Sellers</a></li>
+                      <li><a href="#">Category</a></li>
+                      <li><a href="#">Contact</a></li>
+                      <li><a href="#">About Us</a></li>
+                  </ul>
+              </div>
+            </div>
       </div>
     </footer>
   </body>

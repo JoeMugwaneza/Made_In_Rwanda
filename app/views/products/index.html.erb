@@ -1,31 +1,35 @@
-<h1 style="text-align: center;"></h1>
-<% unless current_user.seller_profile || current_user.admin%>
-  <%= link_to "Sell with us!", "/seller_profiles/new", style: "float: left;", class: "btn btn-default" %>
-  <% end %>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-  <% if current_user.admin %>
-    <%= button_to "Add New Product", "/products/new", style: "float: right;", class: "btn btn-primary", method: :get %>
-  <% end %>
-  <% if current_user.seller_profile %>
-    <%= link_to "Visit Your Store", "/seller_profiles/#{current_user.seller_profile.id}", class: "btn btn-default", style: "float: right;" %>
-  <% end %>
-<table class="table-striped">
-  <% @products.each_slice(3) do |products| %>
-    <div class="row">
-    <div class="item">
-        <% products.each do |product| %>
-          <div class="col-md-4">
-            <h4><%= link_to product.name, product %></h4>
-            <img src="<%= product.image %>" class="img-responsive" style="width: 200px; height: 250px;">
-            <p>by <%= product.seller_profile.company_name %></p>
-            <!-- <p><b>Description</b>: <%= product.description %></p> -->
-            <data> <b>Price</b>: Rwf <%= product.price %></data>
-          </div>
-        <% end %>
-      
-        <%#= will_paginate @products %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div class="container">
+  <div class="row">
+
+    <h1 style="text-align: center;"></h1>
+      <% unless current_user%>
+        <%= link_to "Sell with us!", "/seller_profiles/new", style: "float: right;", class: "btn btn-default" %>
+      <% end %>
+      <%# if current_user.admin %>
+        <%#= button_to "Add New Product", "/products/new", style: "float: right;", class: "btn btn-primary", method: :get %>
+      <%# end %>
+      <% @products.each_slice(3) do |products| %>
+        <div class="row">
+          <% products.each do |product| %>
+              <div class="col-md-4">
+              <h4><%= link_to product.name, product %></h4>
+              <img src="<%= product.image %>" class="img-responsive" style="width: 200px; height: 250px;">
+              <p>by <%= product.seller_profile.company_name %></p>
+              <!-- <p><b>Description</b>: <%= product.description %></p> -->
+              <b>Price</b>: Rwf <%= product.price %>
+            </div>
+      <% end %>
+        </div>
+        
+      <% end %>
     </div>
-    </div>
-  <% end %>
+          <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+  </div>
+</body>
+</html>

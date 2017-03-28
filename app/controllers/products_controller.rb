@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
-   before_action :authenticate_user!, except: [:index, :show, :search]
+   before_action :authenticate_seller!, only: [:new, :edit, :destroy]
 
   def index
     if params[:category].blank?
       @products = Product.paginate(:page => params[:page], :per_page => 6).order("created_at DESC")
       else
       @category_id =  Category.find_by(name: params[:category]).id
-      @products = Product.where(category_id: @category_id).order("created_at DESC")
+      @products = Product.where(category_id: @category_id).paginate(:page => params[:page], :per_page => 6).order("created_at DESC")
     end 
   end 
 
@@ -41,7 +41,13 @@ class ProductsController < ApplicationController
     end 
   end 
   def edit
-    @product = Product.find_by(id: params[:id])
+    product = Product.find_by(id: params[:id])
+    if current_user && current_user.seller_profile && current_user.seller_profile.products.include?(product) || current_user.admin
+      @product = product
+    else
+      flash[:warning] = "access denied"
+      redirect_to "/"
+    end
   end 
 
   def update
