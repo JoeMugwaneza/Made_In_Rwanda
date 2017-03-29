@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_many :posts
   has_one :seller_profile
   has_many :products, through: :seller_profile
+  has_many :products, through: :carted_products
 end

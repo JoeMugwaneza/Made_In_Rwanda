@@ -5,7 +5,16 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end 
 
-  helper_method :current_user
+  def shopping_cart
+    if current_user && current_user.orders.find_by(completed: false)
+      return current_user.orders.find_by(completed: false).carted_products.count
+    else 
+      return ""
+    end 
+    
+  end
+
+  helper_method :current_user, :shopping_cart
 
   def authenticate_admin!
     unless current_user && current_user.admin
