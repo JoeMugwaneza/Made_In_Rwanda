@@ -29,6 +29,7 @@
   background-color: #008000;
 }
 
+
 .navbar .navbar-nav>li>a {
   color: #bbb;
   padding-bottom: 24px;
@@ -43,7 +44,7 @@
   background-color: #1d9a1d;
   border-top: 3px solid #0000ff;
   color: #008000;
-  min-width: 200px;
+  min-width: 250px;
 }
 
 .dropdown-menu li>a, .dropdown-menu li>span {
@@ -56,7 +57,7 @@
 .dropdown-menu>li>a:hover {
   color: black;
   background-color: yellow;
-  padding-left: 39px;
+  padding-left: 42px;
   transition: all .3s ease-in-out;
 }
 

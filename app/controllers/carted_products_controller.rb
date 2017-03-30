@@ -1,11 +1,16 @@
 class CartedProductsController < ApplicationController
 
   def index
-    @carted_products = CartedProduct.all
-    @order = current_user.orders.find_by(completed:false)
-    unless @order
-      flash[:warning] = "Your Shopping is Empty"
-      redirect_to "/"
+    if current_user
+      @carted_products = CartedProduct.all
+      @order = current_user.orders.find_by(completed:false)
+      unless @order
+        flash[:warning] = "Your Shopping is Empty"
+        redirect_to "/carted_products"
+      end
+    else
+      flash[:warning] = "Login before shopping"
+      redirect_to "/login"
     end
   end
 

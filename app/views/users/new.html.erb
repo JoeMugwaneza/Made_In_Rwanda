@@ -7,31 +7,58 @@
 
 </head>
 <body>
+  <div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                <img src="assets/logo.png">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Please sign up To start buying with us <small style="color: red;">It's free!</small></h3>
+            </div>
+            <div class="panel-body">
+            <%= form_tag "/users", method: :post do %>
+              <form role="form">
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                    </div>
+                  </div>
+                </div>
 
-<div class="signup">
-  <img src="assets/logo.png">
+                <div class="form-group">
+                  <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                </div>
 
-  <%= form_tag "/users", method: :post do %>
-    <div class="form-input">
-      <input type="name" name="first_name" placeholder="Enter First Name ">
-    </div>
-    <div class="form-input">
-      <input type="name" name="last_name" placeholder="Enter Last Name">
-    </div>
-    <div class="form-input">
-      <input type="email" name="email" placeholder="Enter Email">
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                    </div>
+                  </div>
+                </div>
+                
+                <input type="submit" value="Sign Up" class="btn btn-info btn-block">
+                
+                  <br><p class="paragraphs">Do you have account? <a class="button" href="/login">LOGIN</a></p>
+              </form>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="form-input">
-      <input type="password" name="password" placeholder="Enter Password">
-    </div>
-    <div class="form-input">
-      <input type="password" name="password_confirmation" placeholder="Re-enter Password">
-    </div>
-    <input type="submit" name="submit" value="Signup" class="btn-signup"><br>
-    <br><p class="paragraphs">Do you have account? <a class="button" href="/login">LOGIN</a></p>
- <% end %>
-</div>
 
 </body>
 </html>

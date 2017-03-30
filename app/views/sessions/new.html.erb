@@ -2,27 +2,44 @@
 <html>
 <head>
   <title></title>
-<link rel="stylesheet" type="text/css" href="css/style.css"></link>
-<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css"></link> -->
+<!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.css"> -->
 
 </head>
 <body>
-
-<div class="login">
-  <img src="assets/logo.png">
-
-  <%= form_tag "/login", method: :post do %>
-    <div class="form-input">
-      <input type="email" name="email" placeholder="Enter Email">
+    <div class="container">
+      <img  src="assets/logo.png" align="center">
+        <div class="row vertical-offset-100">
+          <div class="col-md-4 col-md-offset-4"> 
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Please sign in</h3>
+            </div>
+              <div class="panel-body">
+              <%= form_tag "/login", method: :post do %>
+                <form accept-charset="UTF-8" role="form">
+                        <fieldset>
+                    <div class="form-group">
+                      <input class="form-control" placeholder="E-mail" name="email" type="email">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                  </div>
+                  <div class="checkbox">
+                      <label>
+                        <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                      </label>
+                    </div>
+                  <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                  <br><p class="paragraphs">Don't you have account? <a class="button" href="/signup">Signup</a></p>
+                </fieldset>
+                  </form>
+                  <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="form-input">
-      <input type="password" name="password" placeholder="Enter Password">
-    </div>
-    <input type="submit" name="submit" value="LOGIN" class="btn-login"><br>
-    <br><p class="paragraphs">Don't you have account? <a class="button" href="/signup">Signup</a></p>
- <% end %>
-</div>
 
 </body>
 </html>

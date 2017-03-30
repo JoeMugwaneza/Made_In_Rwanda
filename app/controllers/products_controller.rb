@@ -2,9 +2,15 @@ class ProductsController < ApplicationController
    before_action :authenticate_seller!, only: [:new, :edit, :destroy]
 
   def index
-    if params[:category].blank?
+    if params[:sort] == "asc"
+      @products = Product.paginate(:page => params[:page], :per_page => 6).all.order(:price)
+      
+    elsif params[:sort] == "desc"
+      @products = Product.paginate(:page => params[:page], :per_page => 6).all.order(price: :desc)
+
+    elsif params[:category].blank?
       @products = Product.paginate(:page => params[:page], :per_page => 6).order("created_at DESC")
-      else
+    else
       @category_id =  Category.find_by(name: params[:category]).id
       @products = Product.where(category_id: @category_id).paginate(:page => params[:page], :per_page => 6).order("created_at DESC")
     end 

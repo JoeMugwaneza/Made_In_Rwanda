@@ -8,12 +8,6 @@
   <div class="row">
 
     <h1 style="text-align: center;"></h1>
-      <% unless current_user%>
-        <%= link_to "Sell with us!", "/seller_profiles/new", style: "float: right;", class: "btn btn-default" %>
-      <% end %>
-      <%# if current_user.admin %>
-        <%#= button_to "Add New Product", "/products/new", style: "float: right;", class: "btn btn-primary", method: :get %>
-      <%# end %>
       <% @products.each_slice(3) do |products| %>
         <div class="row">
           <% products.each do |product| %>
