@@ -44,7 +44,7 @@
 
             <h1><%= @seller.company_name %></h1>
         <img src="<%= @seller.image%>"> 
-        <% if current_user.seller_profile %>
+        <% if current_user && current_user.seller_profile %>
         <%= link_to "UpdateProfile", "/seller_profiles/#{@seller.id}/edit", class: "glyphicon glyphicon-pencil", style: "float: right; color: rgb(100, 160, 36); margin: 0px 20px;"%>
         <% end %>
         <h1 style="text-align: center;"></h1>

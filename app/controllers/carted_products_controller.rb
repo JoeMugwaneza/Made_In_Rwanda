@@ -6,7 +6,7 @@ class CartedProductsController < ApplicationController
       @order = current_user.orders.find_by(completed:false)
       unless @order
         flash[:warning] = "Your Shopping is Empty"
-        redirect_to "/carted_products"
+        redirect_to "/"
       end
     else
       flash[:warning] = "Login before shopping"
