@@ -7,6 +7,7 @@
   <div class="col-md-8">
     <table class="table">
       <tr>
+        <th>Product Image</th>
         <th>Product Name</th>
         <th>Quantity</th>
         <th>Price Per Product</th>
@@ -14,6 +15,7 @@
       </tr>
     <% @order.carted_products.each do |carted_product| %>
       <tr>
+        <td><img src="<%= carted_product.product.image %>"></td>
         <td><%= carted_product.product.name %></td>
         <td><%= carted_product.quantity %></td>
         <td><%= carted_product.product.price %></td>

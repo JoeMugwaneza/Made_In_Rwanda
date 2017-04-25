@@ -11,10 +11,10 @@
       <% @products.each_slice(3) do |products| %>
         <div class="row">
           <% products.each do |product| %>
-              <div class="col-md-4">
-              <h4><%= link_to product.name, product %></h4>
+              <div class="col-md-4" id="product_layout">
+              <h4 class="product_name"><%= link_to product.name, product %></h4>
               <img src="<%= product.image %>" class="img-responsive" style="width: 200px; height: 250px;">
-              <p>by <%= product.seller_profile.company_name %></p>
+              <p class="seller_name">by <%= product.seller_profile.company_name %></p>
               <!-- <p><b>Description</b>: <%= product.description %></p> -->
               <b>Price</b>: Rwf <%= product.price %>
             </div>

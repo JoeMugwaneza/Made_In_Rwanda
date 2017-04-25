@@ -1,10 +1,13 @@
 <div class="comment clearfix">
   <div class="comment_content">
     <p class="comment_name"><strong><%= comment.name %></strong></p>
-    <p class="comment_body"><%= comment.body %></p>
+    <p class="comment_body"><%= comment.body %> 
+
+    <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash", method: :delete, data: {confirm: 'you are going to delete this comment, you want to continue?'},  style: "color: red;"%>
+    </p>
     <p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</p>
   </div>
-  <% if current_user %>
-  <p><%= link_to 'Delete', [comment.post, comment], method: :delete, data: {confirm: 'Are you sure?'} %></p>
-  <% end %>
+
+   <p></p>
 </div>
+<!--     <button class="glyphicon glyphicon-trash" aria-hidden="true" style="color:red;", method: :delete ></button> -->

@@ -7,7 +7,7 @@ class SellerProfilesController < ApplicationController
   end
   def show
     @seller = SellerProfile.find_by(id: params[:id])
-    @products = @seller.products.paginate(:page => params[:page], :per_page => 6).order("created_at DESC")
+    @products = @seller.products.paginate(:page => params[:page], :per_page => 8).order("created_at DESC")
 
   end
 

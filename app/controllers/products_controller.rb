@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
 
   def show 
     @product = Product.find_by(id: params[:id])
+    @product_category = Product.find_by(id: params[:id]).category.name
   end
 
   def new

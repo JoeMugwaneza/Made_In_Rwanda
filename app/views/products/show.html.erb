@@ -7,12 +7,12 @@
     <title>eCommerce Product Detail</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-
   </head>
 
   <body>
   
   <div class="container">
+      <h5 class="product_link"><%= link_to "Products", products_path %> / <%=link_to @product.category.name, products_path(category: @product_category)%> / <%= @product.name %></h5>
     <div class="card">
       <div class="container-fliud">
         <div class="wrapper row">
@@ -35,9 +35,9 @@
             <p class="product-description"><%= @product.description %></p>
             <h4 class="price">Current price:<span> Rwf <%= @product.price %></span></h4><br>
                 <%= form_tag "/carted_products", method: :post do %>
-                  <div>
-                  Quantity:
-                  <select style="width: 200px;" name="quantity">
+                  <div style="font-family: cursive; font-size: 16px;">
+                  Quantity in store:
+                  <select style="width: 100px;" name="quantity">
                     <option"><%= 1.upto(@product.quantity) do |i| %></option>
                     <option><%= i %></option>
                     <% end %>

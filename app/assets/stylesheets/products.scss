@@ -167,3 +167,29 @@ img {
             transform: scale(1); } }
 
 /*# sourceMappingURL=style.css.map */
+
+/*my own styling*/
+
+.product_link {
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 10px;
+  font-family: cursive;
+  color: grey;
+  background-color: white;
+  border-top: 4px solid green;
+}
+
+.product_name {
+  font-weight: bold;
+  font-size: 18px;
+  font-family: cursive;
+  color: grey;
+}
+
+.seller_name {
+  font-weight: bold;
+  font-size: 18px;
+  font-family: cursive;
+  color: grey;
+}
