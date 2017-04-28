@@ -14,6 +14,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'geocoder', '~> 1.4', '>= 1.4.3'
 gem 'paperclip', '~> 5.1'
+gem 'ckeditor_rails', '~> 4.6', '>= 4.6.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -34,7 +35,6 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-gem 'simple_form', '~> 3.4'
 gem 'unirest', '~> 1.1', '>= 1.1.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
