@@ -7,6 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 gem 'rails', '~> 5.0.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootswatch-rails'
