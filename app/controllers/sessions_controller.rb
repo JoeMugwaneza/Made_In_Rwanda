@@ -12,7 +12,11 @@ class SessionsController < ApplicationController
       else
         cookies[:auth_token] = user.auth_token
       end
-      redirect_to root_url, :notice => "logged in!"
+      if user.seller_profile
+        redirect_to "/seller_profiles/#{user.seller_profile.id}"
+      else
+        redirect_to root_url, :notice => "logged in!"
+      end
     else
       flash.now.alert = "Invalid email or password"
       render 'new'
