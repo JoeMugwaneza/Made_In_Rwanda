@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
-    redirect_to root_url, :notice => "logged out!"
+    redirect_to "/login", :notice => "logged out!"
   end
 
 end
