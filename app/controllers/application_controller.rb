@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-  end 
+    @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+  end
 
   def shopping_cart
     if current_user && current_user.orders.find_by(completed: false)
