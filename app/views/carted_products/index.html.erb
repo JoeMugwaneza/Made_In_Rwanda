@@ -1,31 +1,33 @@
 <div class="container">
   <div class="row">
-  <% if @carted_products.empty? %>
-  <h4>Your cart is empty</h4>
-  <% else %>
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-    <table class="table">
-      <tr>
-        <th>Product Image</th>
-        <th>Product Name</th>
-        <th>Quantity</th>
-        <th>Price Per Product</th>
-        <th>Remove</th>
-      </tr>
-    <% @order.carted_products.each do |carted_product| %>
-      <tr>
-        <td><img src="<%= carted_product.product.image %>"></td>
-        <td><%= carted_product.product.name %></td>
-        <td><%= carted_product.quantity %></td>
-        <td><%= carted_product.product.price %></td>
-        <td><%= link_to "Remove", "/carted_products/#{carted_product.id}", method: :delete %></td>
-      </tr>
-      <% end %>
-    </table>
-    <%= link_to "Buy now", "/orders/#{@order.id}", class: "btn btn-success", method: :patch %> <br>
+    <div class="col-md-0"></div>
+    <div class="col-md-12">
+    <% if  @order.carted_products.any? %>
+      <table class="table">
+        <tr style="font-family: cursive; font-size: 20px;">
+          <th>Product Image</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price Per Product</th>
+          <th>Remove</th>
+        </tr>
+      <% @order.carted_products.each do |carted_product| %>
+        <tr style="font-family: cursive; font-size: 16px;">
+          <td><img src="<%= carted_product.product.image %>"></td>
+          <td><%= carted_product.product.name %></td>
+          <td><%= carted_product.quantity %></td>
+          <td><%= carted_product.product.price %></td>
+          <td><%= link_to "Remove", "/carted_products/#{carted_product.id}", method: :delete %></td>
+        </tr>
+        <% end %>
+      </table>
+      <%= link_to "Buy now", "/orders/#{@order.id}", class: "btn btn-success", method: :patch %> <br>
+    <% else %>
+        <h1 class="text-center", style="font-family: cursive;">Your cart is empty</h1>
+        <p class="cart_image"><img src="../assets/empty_cart.jpeg"></p>
+
   <% end %>
-  <br> <br> <br> <br><p>Keep<a href="/"> Shopping </a> with Us</p> <br>
+ <br> <br><p style="font-size: 22px; font-family: cursive;">Keep<a href="/"> Shopping </a> with Us</p> <br>
   </div>
   </div>
 </div>

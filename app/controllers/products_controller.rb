@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
       @products = Product.paginate(:page => params[:page], :per_page => 6).all.order(price: :desc)
 
     elsif params[:category].blank?
-      @products = Product.paginate(:page => params[:page], :per_page => 6).order("created_at DESC")
+      @products = Product.paginate(:page => params[:page], :per_page => 9).order("created_at DESC")
     else
       @category_id =  Category.find_by(name: params[:category]).id
       @products = Product.where(category_id: @category_id).paginate(:page => params[:page], :per_page => 6).order("created_at DESC")
