@@ -23,10 +23,10 @@
       </table>
       <%= link_to "Buy now", "/orders/#{@order.id}", class: "btn btn-success", method: :patch %> <br>
     <% else %>
-        <h1 class="text-center", style="font-family: cursive;">Your cart is empty</h1>
+        <h1 class="text-center", style="font-family: cursive;">Your cart is empty</h1><br><br>
         <p class="cart_image"><img src="../assets/empty_cart.jpeg"></p>
 
-  <% end %>
+  <% end %><br><br>
  <br> <br><p style="font-size: 22px; font-family: cursive;">Keep<a href="/"> Shopping </a> with Us</p> <br>
   </div>
   </div>
