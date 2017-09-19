@@ -87,11 +87,11 @@
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul> -->
-         <% if current_user %>
-              <li><%= link_to "Logout", "/logout", method: :delete %></li>
+         <% if user_signed_in? %>
+              <li><a href="<%= signout_path %>" class=" nav-content-format" role="button" ><strong>Sign Out</strong></a></li>
                <li><a class="glyphicon glyphicon-shopping-cart" href="/carted_products">Cart<sup class="shopping_cart"><%= shopping_cart %></sup></a></li>
             <% else %>
-              <li><%= link_to "Log In", "/login" %></li>
+              <li><%= link_to "Sign In", "/users/sign_in" %></li>
               <li><a class="glyphicon glyphicon-shopping-cart" href="/carted_products">Cart<sup class="shopping_cart"><%= shopping_cart %></sup></a></li>
             <% end %>
         </li>

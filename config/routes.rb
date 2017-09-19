@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+  
   root 'products#index'
+
+  devise_for :users, controllers: {
+        registrations: 'users/registrations'
+      }
+
+
+  devise_scope :user do
+    get 'signout', to: 'devise/sessions#destroy', as: :signout
+  end
   
   resources :products
   # get "products", to: 'products#index'

@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-   before_action :authenticate_seller!, only: [:new, :edit, :destroy]
 
   def index
     if params[:sort] == "asc"
