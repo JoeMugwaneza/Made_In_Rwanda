@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="container">
-      <img  src="assets/logo.png" align="center">
         <div class="row vertical-offset-100">
           <div class="col-md-4 col-md-offset-4"> 
             <div class="panel panel-default">
@@ -16,25 +15,36 @@
                 <h3 class="panel-title">Please sign in</h3>
             </div>
               <div class="panel-body">
-              <%= form_tag "/login", method: :post do %>
+               <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <form accept-charset="UTF-8" role="form">
                         <fieldset>
                     <div class="form-group">
-                      <input class="form-control" placeholder="E-mail" name="email" type="email">
+                      <input class="form-control" placeholder="E-mail" name="email" type="email" autocomplete="on">
                   </div>
+
                   <div class="form-group">
-                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                    <input class="form-control" placeholder="Password" name="password" type="password" value="" autocomplete="on">
                   </div>
-                  <div class="checkbox">
+                  <p> Forgot your password?
+                    <%= link_to "Rest passowrd", new_password_reset_path  %>
+                    
+                  </p>
+                  <div class="field">
+                    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+                    <%= label_tag :remember_me %>
+                  </div>
+                  <!-- <div class="checkbox inline">
                       <label>
                         <input name="remember" type="checkbox" value="Remember Me"> Remember Me
                       </label>
-                    </div>
+                    </div> -->
                   <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-                  <br><p class="paragraphs">Don't you have account? <a class="button" href="/signup">Signup</a></p>
+                  <br><p class="paragraphs">are you new here? <a class="button" href="/signup">Signup</a></p>
                 </fieldset>
                   </form>
                   <% end %>
+
+
               </div>
           </div>
         </div>

@@ -18,10 +18,8 @@ class UsersController < ApplicationController
     )
    
     if user.save
-      session[:user_id] = user.id
-      flash[:success] = "Successfully created account"
-
-      redirect_to "/products"
+      cookies[:auth_token] = user.auth_token
+      redirect_to root_url, :notice => "Successfully created account!"
     else 
       flash[:warning] = "Invalid email or password"
 
@@ -30,3 +28,7 @@ class UsersController < ApplicationController
       
   end
 end
+
+
+ #to use below user.save 
+ # session[:user_id] = user.id

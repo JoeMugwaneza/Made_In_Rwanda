@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+  
   root 'products#index'
+
+  devise_for :users, controllers: {
+        registrations: 'users/registrations'
+      }
+
+
+  devise_scope :user do
+    get 'signout', to: 'devise/sessions#destroy', as: :signout
+  end
   
   resources :products
   # get "products", to: 'products#index'
@@ -19,6 +29,8 @@ Rails.application.routes.draw do
   # post "/seller_profiles/:id", to: 'seller_profiles#create'
   
   resources :seller_profiles
+  resources :password_resets
+  
 
   get "/users", to: 'users#index'
   get "/signup", to: 'users#new'
@@ -44,4 +56,5 @@ Rails.application.routes.draw do
   get "/about", to: 'pages#about'
   get "/contact", to: 'pages#contact'
   get "/challenge", to: 'pages#challenge'
+
 end

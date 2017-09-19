@@ -3,7 +3,7 @@
     <p class="comment_name"><strong><%= comment.name %></strong></p>
     <p class="comment_body"><%= comment.body %> 
 
-    <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash", method: :delete, data: {confirm: 'you are going to delete this comment, you want to continue?'},  style: "color: red;"%>
+    <%= link_to '', [post.comment, comment], class: "glyphicon glyphicon-trash", method: :delete, data: {confirm: 'you are going to delete this comment, you want to continue?'},  style: "color: red;"%>
     </p>
     <p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</p>
   </div>
