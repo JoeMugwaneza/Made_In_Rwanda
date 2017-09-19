@@ -256,7 +256,9 @@
                   <ul class="footer-nav">
                       <li><a href="/">Home</a></li>
                       <li><a href="/posts" target="blank">Blog</a></li>  
-                      <% if user_signed_in? %>     
+                      <% if current_user && current_user.seller_profile%>
+                      <li><a href="/seller_profiles/<%= current_user.seller_profile.id %>">Your store</a></li>
+                      <% elsif current_user && !current_user.seller_profile %>
                       <li><a href="/seller_profiles/new?user_id=<%= current_user.id %>">Sell With Us</a></li> 
                       <% end %>                  
                       <li><a href="#">Category</a></li>

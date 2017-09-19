@@ -1,5 +1,5 @@
 class SellerProfile < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
   has_many :products
   validates :company_name, presence: true
   validates :company_email, presence: true
