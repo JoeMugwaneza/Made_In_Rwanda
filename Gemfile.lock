@@ -56,6 +56,10 @@ GEM
       railties (>= 3.1)
     builder (3.2.3)
     byebug (9.0.6)
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     ckeditor_rails (4.6.2)
       railties (>= 3.0)
     coderay (1.1.1)
@@ -211,6 +215,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   bootswatch-rails
   byebug
+  carrierwave (~> 1.1)
   ckeditor_rails (~> 4.6, >= 4.6.2)
   coffee-rails (~> 4.2)
   devise (~> 4.3)

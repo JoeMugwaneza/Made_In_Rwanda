@@ -12,7 +12,7 @@ class SellerProfilesController < ApplicationController
   end
 
   def new
-    # seller_profile = SellerProfile.new
+     @seller_profile = SellerProfile.new
   end
 
   def create
@@ -30,7 +30,7 @@ class SellerProfilesController < ApplicationController
       location: params[:location],
       contact: params[:contact],
       user_id: current_user.id,
-      image: params[:image]
+      seller_logo: params[:seller_logo]
       )
 
       if @seller_profile.save
