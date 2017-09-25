@@ -17,6 +17,8 @@ gem 'geocoder', '~> 1.4', '>= 1.4.3'
 gem 'ckeditor_rails', '~> 4.6', '>= 4.6.2'
 gem 'devise', '~> 4.3'
 gem 'carrierwave', '~> 1.1'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'oauth2', '~> 1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
     total_total = total_tax + total_subtotal
     @order.assign_attributes(tax: total_tax, subtotal: total_subtotal, total: total_total, completed: true)
     if @order.save
-    UsermailerMailer.sent_order(@order).deliver_now
+    # UsermailerMailer.sent_order(@order).deliver_now
     redirect_to "/orders/#{@order.id}"
     end 
   end

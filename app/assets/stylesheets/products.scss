@@ -2,14 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 /*****************globals*************/
-/*body {
+body {
   font-family: 'open sans';
   overflow-x: hidden; }
-*/
+
 img {
-  max-width: 50%; }
+  max-width: 100%; }
 
 .preview {
   display: -webkit-box;
@@ -57,7 +56,7 @@ img {
 
 .card {
   margin-top: 50px;
-  background: #ffffff;
+  background: #eee;
   padding: 3em;
   line-height: 1.5em; }
 
@@ -86,7 +85,7 @@ img {
           flex-grow: 1; }
 
 .product-title, .price, .sizes, .colors {
-  text-transform: capitalize;
+  text-transform: UPPERCASE;
   font-weight: bold; }
 
 .checked, .price span {
@@ -146,6 +145,7 @@ img {
 .tooltip-inner {
   padding: 1.3em; }
 
+
 @-webkit-keyframes opacity {
   0% {
     opacity: 0;
@@ -167,29 +167,7 @@ img {
             transform: scale(1); } }
 
 /*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
 
 /*my own styling*/
 
-.product_link {
-  font-weight: bold;
-  font-size: 16px;
-  padding-top: 10px;
-  font-family: cursive;
-  color: grey;
-  background-color: white;
-  border-top: 4px solid green;
-}
-
-.product_name {
-  font-weight: bold;
-  font-size: 18px;
-  font-family: cursive;
-  color: grey;
-}
-
-.seller_name {
-  font-weight: bold;
-  font-size: 18px;
-  font-family: cursive;
-  color: grey;
-}

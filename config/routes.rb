@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root 'products#index'
 
   devise_for :users, controllers: {
-        registrations: 'users/registrations'
+        registrations: 'users/registrations', 
+        :omniauth_callbacks => "users/omniauth_callbacks" 
       }
 
 
@@ -11,34 +12,16 @@ Rails.application.routes.draw do
     get 'signout', to: 'devise/sessions#destroy', as: :signout
   end
   
-  resources :products
-  # get "products", to: 'products#index'
-  # get "products/new", to: 'products#new'
-  # get "products/:id/edit", to: 'products#edit'
-  # post "products", to: 'products#create'
-  # get "products/:id", to: 'products#show'
-  # patch "products/:id/edit", to: 'products#update'
-
-  resources :posts do
-    resources :comments
+  resources :products do 
+    resources :product_images
   end
 
-  # get "/seller_profiles", to: 'seller_profiles#index'
-  # get "/seller_profiles/new", to: 'seller_profiles#new'
-  # get "/seller_profiles/:id", to: 'seller_profiles#show'
-  # post "/seller_profiles/:id", to: 'seller_profiles#create'
+  # resources :posts do
+  #   resources :comments
+  # end
   
   resources :seller_profiles
-  resources :password_resets
-  
-
-  get "/users", to: 'users#index'
-  get "/signup", to: 'users#new'
-  post "/users", to: 'users#create'
-
-  get "/login", to: 'sessions#new'
-  post "/login", to: 'sessions#create'
-  delete "/logout", to: 'sessions#destroy'
+  # resources :password_resets
 
   get "/orders", to: 'orders#new'
   get "/orders/:id", to: 'orders#show'
@@ -52,6 +35,8 @@ Rails.application.routes.draw do
 
 
   post "/searches", to: 'searches#index'
+
+  get '/searches', to: 'searches#index'
 
   get "/about", to: 'pages#about'
   get "/contact", to: 'pages#contact'

@@ -1,13 +1,11 @@
 class SellerProfilesController < ApplicationController
 
   def index
-    @sellers = SellerProfile.all
-    # @sellers =  User.joins(:seller_profile).where('seller_profiles.user_id IS NOT NULL').distinct
-    
+    @sellers =  User.joins(:seller_profile)
   end
   def show
     @seller = SellerProfile.find_by(id: params[:id])
-    @products = @seller.products.paginate(:page => params[:page], :per_page => 8).order("created_at DESC")
+    @seller_products = @seller.products.paginate(:page => params[:page], :per_page => 8).order("created_at DESC")
 
   end
 
@@ -59,12 +57,5 @@ class SellerProfilesController < ApplicationController
         )
 
       redirect_to "/seller_profiles/#{current_user.seller_profile.id}}"
-    end
-
-    def destroy
-      @product = Product.find_by(id: params[:id])
-      @product.destroy
-
-      redirect_to "/seller_profiles/#{@seller.id}"
     end
 end

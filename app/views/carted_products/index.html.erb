@@ -13,7 +13,7 @@
         </tr>
       <% @order.carted_products.each do |carted_product| %>
         <tr style="font-family: cursive; font-size: 16px;">
-          <td><img src="<%= carted_product.product.image %>"></td>
+          <td><img src="<%= carted_product.product.product_images.first.image_url %>"></td>
           <td><%= carted_product.product.name %></td>
           <td><%= carted_product.quantity %></td>
           <td><%= carted_product.product.price %></td>

@@ -7,53 +7,85 @@
     <title>eCommerce Product Detail</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
   </head>
 
   <body>
   
   <div class="container">
-      <h5 class="product_link"><%= link_to "Products", products_path %> / <%=link_to @product.category.name, products_path(category: @product_category)%> / <%= @product.name %></h5>
     <div class="card">
       <div class="container-fliud">
         <div class="wrapper row">
           <div class="preview col-md-6">
+            
             <div class="preview-pic tab-content">
-              <div class="tab-pane active" id="pic-1"><img src="<%=@product.image %>" /></div>
               
-            </div>
-            <div>
-            <% if current_user && current_user.seller_profile %>
-            <%= link_to "Edit a Product", "/products/#{@product.id}/edit", class: "btn btn-warning" %> 
-            <%= link_to "Delete a Product", seller_profile_path, method: :delete, data: {confirm: "Do you want to delete this product?"}, class: "btn btn-danger" %>
-              <%end %>
-            </div>
 
+              <div class="tab-pane active" id="pic-1"><img src="<%= @product.product_images.first.image_url %>" /></div>
+              <% if @product.product_images.second %>
+                <div class="tab-pane" id="pic-2"><img src="<%= @product.product_images.second.image_url%>?w=400" /></div>
+              <% if @product.product_images.third %>
+                <div class="tab-pane" id="pic-3"><img src="<%= @product.product_images.third.image_url%>?w=400" /></div>
+              <% if @product.product_images.fourth %>
+                <div class="tab-pane" id="pic-4"><img src="<%= @product.product_images.fourth.image_url%>?w=400" /></div>
+              <% if @product.product_images.fifth %>
+                <div class="tab-pane" id="pic-5"><img src="<%= @product.product_images.fifth.image_url%>?w=400" /></div>
+              <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
+            </div>
+            <ul class="preview-thumbnail nav nav-tabs">
+              <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<%= @product.product_images.first.image_url %>" /></a></li>
+
+              <% if @product.product_images.second %>
+              <li><a data-target="#pic-2" data-toggle="tab"><img src="<%= @product.product_images.second.image_url%>?w=400" /></a></li>
+              <% if @product.product_images.third %>
+              <li><a data-target="#pic-3" data-toggle="tab"><img src="<%= @product.product_images.third.image_url%>?w=400" /></a></li>
+              <% if @product.product_images.fourth %>
+              <li><a data-target="#pic-4" data-toggle="tab"><img src="<%= @product.product_images.fourth.image_url%>?w=400" /></a></li>
+              <% if @product.product_images.fifth %>
+              <li><a data-target="#pic-5" data-toggle="tab"><img src="<%= @product.product_images.fifth.image_url%>?w=400" /></a></li>
+              <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
+            </ul>
+            
           </div>
           <div class="details col-md-6">
             <h3 class="product-title"><%= @product.name %></h3>
-            <h3 class="product-title">Shop Name: <%= link_to @product.seller_profile.company_name, "/seller_profiles/#{@product.seller_profile.id}"  %></h3>
-            <p class="product-description"><%= @product.description %></p>
-            <h4 class="price">Current price:<span> Rwf <%= @product.price %></span></h4><br>
-                <%= form_tag "/carted_products", method: :post do %>
-                  <div style="font-family: cursive; font-size: 16px;">
-                  Quantity in store:
-                  <select style="width: 100px;" name="quantity">
-                    <option"><%= 1.upto(@product.quantity) do |i| %></option>
-                    <option><%= i %></option>
-                    <% end %>
-                  </select>
-                  </div>
-                  <div><br>
-                    <input type="hidden" name="product_id" value="<%= @product.id %>">
-                  </div>
-                  <div>    
-                    <input type="submit" value="Add to cart!" class="btn btn-default">
-                  </div>
-                <% end  %>
+            <div class="rating">
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <span class="review-no">41 reviews</span>
             </div>
+            <p class="product-description"><%= @product.description %></p>
+            <h4 class="price">current price: <span><%= @product.price %></span></h4>
+            <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+            <h5 class="sizes">sizes:
+              <span class="size" data-toggle="tooltip" title="small">s</span>
+              <span class="size" data-toggle="tooltip" title="medium">m</span>
+              <span class="size" data-toggle="tooltip" title="large">l</span>
+              <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
             </h5>
+            <h5 class="colors">colors:
+              <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+              <span class="color green"></span>
+              <span class="color blue"></span>
+            </h5>
+            <div class="action">
+              <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+              <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+            </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
   </body>

@@ -8,7 +8,7 @@
   <div class="row">
 
     <h1 style="text-align: center;"></h1>
-    <% if @products.any? %>
+    <% if @products.present? %>
       <p>Search Results:</p>
 
       <% @products.each_slice(3) do |products| %>
@@ -16,7 +16,7 @@
           <% products.each do |product| %>
               <div class="col-md-4">
               <h4><%= link_to product.name, product %></h4>
-              <img src="<%= product.image %>" class="img-responsive" style="width: 200px; height: 250px;">
+              <img src="<%= product.product_images.first.image_url %>" class="img-responsive" style="width: 200px; height: 250px;">
               <p>by <%= product.seller_profile.company_name %></p>
               <!-- <p><b>Description</b>: <%= product.description %></p> -->
               <b>Price</b>: Rwf <%= product.price %>

@@ -16,7 +16,6 @@ class CartedProductsController < ApplicationController
 
   def show
     carted_product = CartedProduct.find_by(id: params[:id])
-    
   end
 
   def create
@@ -29,8 +28,8 @@ class CartedProductsController < ApplicationController
       flash[:success] = "Product added in your cart"
       redirect_to "/carted_products"
     else
-      flash[:warning] = "Sign up to start making order!"
-      redirect_to "/signup"
+      flash[:warning] = "Sign in to start making order!"
+      redirect_to "/users/sign_in"
     end
 
   end

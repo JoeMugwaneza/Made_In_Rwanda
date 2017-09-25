@@ -56,20 +56,20 @@
               <% end %>
 
         <table class="table-striped">
-          <% @products.each_slice(3) do |products| %>
+          <% @seller_products.each_slice(3) do |products| %>
             <div class="row">
             <div class="item">
                 <% products.each do |product| %>
                   <div class="col-md-4">
                     <h4><%= link_to product.name, product %></h4>
-                    <img src="<%= product.image %>" class="img-responsive" style="width: 200px; height: 250px;">
+                    <img src="<%= product.product_images.first.image_url %>" class="img-responsive" style="width: 200px; height: 250px;">
                     <!-- <p><b>Description</b>: <%= product.description %></p> -->
                     <data> <b>Price</b>: <%= product.price %></data>
                   </div>
                 <% end %>
               <% end %>
          </table>
-               <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+               <%= will_paginate @seller_products, renderer: BootstrapPagination::Rails %>
       </div>
             
       </div>
